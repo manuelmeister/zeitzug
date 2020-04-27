@@ -2,7 +2,7 @@ export default [
     {
         title:    "Einführung",
         number:   "0",
-        desc:     "Sara besucht das <a href='https://de.wikipedia.org/wiki/Verkehrshaus_der_Schweiz'>Verkehrshaus (Museum)</a> mit ihrer Familie. Ihre Schwester Emma will unbedingt zu den Zügen. Plötzlich findet Sara in einer Lokomotive ein altes Buch. Als sie es öffnet, wird sie ins Jahr 1846 katapultiert.",
+        desc:     "Sara besucht das [Verkehrshaus (Museum)](https://de.wikipedia.org/wiki/Verkehrshaus_der_Schweiz) mit ihrer Familie. Ihre Schwester Emma will unbedingt zu den Zügen. Plötzlich findet Sara in einer Lokomotive ein altes Buch. Als sie es öffnet, wird sie ins Jahr 1846 katapultiert.",
         audio: "audio/E0.mp3",
         athmosphere: "Ruhig, Museum, etwas verstaubt",
         open:     false,
@@ -40,21 +40,21 @@ export default [
     {
         title:    "Pionierzeit",
         number:   "1",
-        desc:     '<p>Dort trifft Sara auf <a href="https://de.wikipedia.org/wiki/Alois_Negrelli_von_Moldelbe">Alois Negrelli</a>. Der hat gerade den Auftrag erhalten, eine Eisenbahnstrecke zwischen <a href="https://en.wikipedia.org/wiki/Z%C3%BCrich%E2%80%93Baden_railway">Zürich und Baden</a> zu bauen. Es sei die erste ganze Strecke in der Schweiz, erklärt er. Für diese Strecke hatte man mit der Kutsche etwa dreimal so lange wie man mit dem Zug haben wird. Zuerst wollte die Regierung der Stadt Baden, dass der Bahnhof im Süden gebaut wird. Doch Negrelli war es wichtig, dass der Bahnhof auf der Nordseite gebaut wird, da dort das Gebiet flacher ist und der Bahnhof einfacher vergrössert werden kann.</p><p>Sie schaffen es und Negrelli gibt Sara <a href="https://de.wikipedia.org/wiki/Spanisch_Br%C3%B6tli">spanische Brötli</a> mit auf die erste Fahrt nach Zürich.</p>',
+        desc:     '<p>Dort trifft Sara auf [Alois Negrelli](https://de.wikipedia.org/wiki/Alois_Negrelli_von_Moldelbe). Der hat gerade den Auftrag erhalten, eine Eisenbahnstrecke zwischen [Zürich und Baden](https://en.wikipedia.org/wiki/Z%C3%BCrich%E2%80%93Baden_railway) zu bauen. Es sei die erste ganze Strecke in der Schweiz, erklärt er. Für diese Strecke hatte man mit der Kutsche etwa dreimal so lange wie man mit dem Zug haben wird. Zuerst wollte die Regierung der Stadt Baden, dass der Bahnhof im Süden gebaut wird. Doch Negrelli war es wichtig, dass der Bahnhof auf der Nordseite gebaut wird, da dort das Gebiet flacher ist und der Bahnhof einfacher vergrössert werden kann.</p><p>Sie schaffen es und Negrelli gibt Sara [spanische Brötli](https://de.wikipedia.org/wiki/Spanisch_Br%C3%B6tli) mit auf die erste Fahrt nach Zürich.</p>',
         //animatic: "<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/DGA1rU3M4PY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"></iframe>",
         open:     false,
         athmosphere: "Weite Landschaften, Goldgräberstimmung, unbekanntes Terrain",
         audio: 'audio/E1.mp3',
         scenes:   [
             {
-                image:  "img/2.2 2.png",
+                image:  "img/baden_bgnew.png",
                 dialog: [
                     {char: 'Sara', text: "Huch, wo bin ich hier gelandet?"},
                     {char: 'Negrelli', text: "Im Jahr 1846 natürlich. Darf ich mich vorstellen. Alois Negrelli mein Name."},
                     {char: 'Sara', text: "Hallo, ich bin Sara. Ich glaube, ich bin soeben mit einem Buch durch die Zeit gereist. Warum bin ich denn gerade hier gelandet?"},
                     {char: 'Negrelli', text: "Das ist ja wohl klar. Hier entsteht etwas Brandneues: Die erste Eisenbahn der Schweizerischen Eidgenossenschaft. Bis jetzt war Basel die einzige Stadt mit Bahnhof. Das möchten wir ändern. Die Schweizerische Nordbahn hat mir den Auftrag gegeben, eine Eisenbahnstrecke von Baden nach Zürich zu bauen."}
                 ],
-                action: "Sie befinden sich auf der <a href='https://de.wikipedia.org/wiki/L%C3%A4gern'>Lägern</a> und schauen auf die Stadt Baden hinunter."
+                action: "Sie befinden sich auf der [Lägern](https://de.wikipedia.org/wiki/L%C3%A4gern) und schauen auf die Stadt Baden hinunter."
             },
             {
                 image:  "img/2.2.png",
@@ -139,7 +139,7 @@ export default [
     {
         title:    "Private Bahnen vs. Staatsbahn",
         number:   "2",
-        desc:     "<p>Sara kommt mit der Schweizerischen Nordbahn in Zürich an. Sie verteilt spanische Brötli. Sie trifft auf <a href='https://de.wikipedia.org/wiki/Alfred_Escher'>Alfred Escher</a>. Escher hat im Nationalrat den Schweizer Eisenbahnbau vorangetrieben. Die Schweizer Bevölkerung hat Angst, dass die Schweiz umfahren wird und somit den wirtschaftlichen Anschluss verliert. Es wird diskutiert, ob die Eisenbahnen vom Staat oder von Privaten geführt werden sollen. Man entscheidet sich dafür, dass jeder selber eine Eisenbahn bauen kann, damit Randregionen nicht lange warten müssen und die Macht der Kantone nicht eingeschränkt wird.</p><p>Escher hat die Vision, dass man die Alpen mit der Eisenbahn überqueren kann. Der <a href='https://de.wikipedia.org/wiki/Gotthardtunnel'>Gotthardtunnel</a> wird gebaut. Vor der Eröffnung wird Alfred leider schwer krank und kann nicht an der Eröffnungsfeier teilnehmen. Sara trifft bei der Rückfahrt auf <a href='https://de.wikipedia.org/wiki/Josef_Zemp'>Josef Zemp</a>, der die Verstaatlichung der Eisenbahnen durchgeführt hat.</p>",
+        desc:     "<p>Sara kommt mit der Schweizerischen Nordbahn in Zürich an. Sie verteilt spanische Brötli. Sie trifft auf [Alfred Escher](https://de.wikipedia.org/wiki/Alfred_Escher). Escher hat im Nationalrat den Schweizer Eisenbahnbau vorangetrieben. Die Schweizer Bevölkerung hat Angst, dass die Schweiz umfahren wird und somit den wirtschaftlichen Anschluss verliert. Es wird diskutiert, ob die Eisenbahnen vom Staat oder von Privaten geführt werden sollen. Man entscheidet sich dafür, dass jeder selber eine Eisenbahn bauen kann, damit Randregionen nicht lange warten müssen und die Macht der Kantone nicht eingeschränkt wird.</p><p>Escher hat die Vision, dass man die Alpen mit der Eisenbahn überqueren kann. Der [Gotthardtunnel](https://de.wikipedia.org/wiki/Gotthardtunnel) wird gebaut. Vor der Eröffnung wird Alfred leider schwer krank und kann nicht an der Eröffnungsfeier teilnehmen. Sara trifft bei der Rückfahrt auf [Josef Zemp](https://de.wikipedia.org/wiki/Josef_Zemp), der die Verstaatlichung der Eisenbahnen durchgeführt hat.</p>",
         animatic: "",
         athmosphere: "Es kommt alles in Fahrt. Im Büro von Escher, eher drückend. Im Zug mit Zemp eher windig",
         audio: "audio/E2.mp3",
@@ -274,7 +274,7 @@ export default [
     {
         title:    "Elektrifizierung",
         number:   "3",
-        desc:     "<p>Sara trifft auf <a href='https://de.wikipedia.org/wiki/Robert_Haab'>Robert Haab</a>, den Generaldirektor der <a href='https://de.wikipedia.org/wiki/Schweizerische_Bundesbahnen'>SBB</a>. Der 1. Weltkrieg beginnt. Die Kohle wird langsam knapp. Die SBB steckt in grossen finanziellen Schwierigkeiten. Die Elektrifizierung ist die Lösung für beide Probleme. Haab will alles elektrifizieren. Sara möchte bei der ersten Fahrt der elekrifizierten <a href='https://de.wikipedia.org/wiki/Krokodil_(Lokomotive)'>Krokodil-Lokomotive</a> von Thun nach Bern dabei sein.",
+        desc:     "<p>Sara trifft auf [Robert Haab](https://de.wikipedia.org/wiki/Robert_Haab), den Generaldirektor der [SBB](https://de.wikipedia.org/wiki/Schweizerische_Bundesbahnen). Der 1. Weltkrieg beginnt. Die Kohle wird langsam knapp. Die SBB steckt in grossen finanziellen Schwierigkeiten. Die Elektrifizierung ist die Lösung für beide Probleme. Haab will alles elektrifizieren. Sara möchte bei der ersten Fahrt der elekrifizierten [Krokodil-Lokomotive](https://de.wikipedia.org/wiki/Krokodil_(Lokomotive)) von Thun nach Bern dabei sein.",
         animatic: "",
         athmosphere: "Krise, Krieg, Ungewissheit, dann erleichtert und motiviert",
         audio: "audio/E3.mp3",
@@ -370,7 +370,7 @@ export default [
     },
     {
         title:    "Ende",
-        number:   "E",
+        number:   "5",
         desc:     "Sara wird in die Gegenwart zurückgeholt. Sie fasst kurz zusammen, was sie alles erlebt hat. Sie fragt ihre Eltern, warum in der Eisenbahngeschichte nur Männer vorkamen. Emma findet, dass sie gerne Lokführerin werden möchte.",
         animatic: "",
         athmosphere: "Etwas benommen von der Reise, aber begeistert",
