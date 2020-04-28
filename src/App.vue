@@ -10,17 +10,22 @@
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
-        <v-app-bar app color="primary" dark :extended="$route.name === 'Storyboard'"
-                   clipped-left v-if="$vuetify.breakpoint.mdAndUp">
-            <v-toolbar-title class="font-weight-bold">Geschichte der Schweizer Eisenbahn</v-toolbar-title>
+        <v-app-bar app color="primary" dark hide-on-scroll :extended="$route.name === 'Storyboard' && $vuetify.breakpoint.mdAndUp"
+                   clipped-left>
+            <v-list-item two-line>
+                <v-list-item-content>
+                    <v-list-item-title class="font-weight-bold">ZeitZug</v-list-item-title>
+                    <v-list-item-subtitle>Schweizer Eisenbahngeschichte</v-list-item-subtitle>
+                </v-list-item-content>
+            </v-list-item>
             <v-spacer/>
-            <v-toolbar-items>
+            <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
                 <v-btn text :to="{name: 'Storyboard'}">Storyboard</v-btn>
                 <v-btn text :to="{name: 'Characters'}">Charaktere</v-btn>
                 <v-btn text :to="{name: 'About'}">Über das Projekt</v-btn>
             </v-toolbar-items>
 
-            <template v-if="$route.name === 'Storyboard'" v-slot:extension>
+            <template v-if="$route.name === 'Storyboard' && $vuetify.breakpoint.mdAndUp" v-slot:extension>
                 <toc :toc="internalToc" :activeIndex="activeIndex"/>
             </template>
         </v-app-bar>
@@ -76,7 +81,7 @@
                 for (const dialog of this.dialogs) {
                     result.push({
                         id: dialog.number + '',
-                        text: dialog.title,
+                        text: dialog.title_short ? dialog.title_short : dialog.title ,
                         parent: parseInt(dialog.number)
                     });
                     result.push(...dialog.scenes.map(
@@ -179,7 +184,8 @@
     }
 
     a .mdi.small {
-        font-size: 1rem;
+        font-size: inherit;
+        padding-left: 2px;
     }
 
     @media print {
@@ -229,6 +235,11 @@
 
     .link {
         display: none;
+        font-size: inherit;
+    }
+
+    .link i.mdi {
+        font-size: inherit !important;
     }
 
     @page {

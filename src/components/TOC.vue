@@ -1,5 +1,5 @@
 <template>
-    <v-tabs dark :value="activeIndex">
+    <v-tabs dark :value="activeIndex" centered>
         <v-tab v-for="(item, i) in toc"
                :key="i"
                :to="{hash: '#' + item.id, params: {stay: false}}">

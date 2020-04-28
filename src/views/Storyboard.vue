@@ -5,8 +5,8 @@
                 <v-toolbar tag="h2" flat color="primary lighten-4">
                     <v-toolbar-title class="headline">
                         {{ dialog.number }}. {{dialog.title}}
-                        <router-link class="link" :to="'#'+dialog.number"
-                                     title="Link">🔗
+                        <router-link text class="link" :to="'#' + dialog.number" title="Kapitelsprungmarke">
+                            <v-icon large>mdi-link</v-icon>
                         </router-link>
                     </v-toolbar-title>
                 </v-toolbar>
@@ -16,11 +16,13 @@
                             <v-card-text>
                                 <div class="textbox">
                                     <h3 class="caption">Beschreibung</h3>
-                                    <div class="textbox--text" v-html="dialog.desc.replace(/\[([^\]]*)\]\(([^)]*)\)/g, parseLink)"/>
+                                    <div class="textbox--text"
+                                         v-html="html(dialog.desc)"/>
                                 </div>
                                 <div class="textbox" v-if="dialog.athmosphere">
                                     <h3 class="caption">Atmosphäre</h3>
-                                    <div class="textbox--text" v-html="dialog.athmosphere.replace(/\[([^\]]*)\]\(([^)]*)\)/g, parseLink)"/>
+                                    <div class="textbox--text"
+                                         v-html="html(dialog.athmosphere)"/>
                                 </div>
                                 <div class="textbox unprint" v-if="dialog.audio">
                                     <h3 class="caption">Dialog</h3>
@@ -49,8 +51,8 @@
                     <v-toolbar flat v-if="$vuetify.breakpoint.smAndDown">
                         <v-toolbar-title>
                             {{ dialog.number }}.{{index}}
-                            <router-link class="link" :to="'#' + dialog.number + '.' + index"
-                                         title="Link">🔗
+                            <router-link class="link" :to="'#' + dialog.number + '.' + index" title="Szenensprungmarke">
+                                <v-icon>mdi-link</v-icon>
                             </router-link>
                         </v-toolbar-title>
                     </v-toolbar>
@@ -60,32 +62,28 @@
                                 <v-card-text>
                                     <h2 v-if="$vuetify.breakpoint.mdAndUp" class="pb-2 font-weight-regular">
                                         {{ dialog.number }}.{{index}}
-                                        <router-link class="link"
-                                                     :to="'#' + dialog.number + '.' + index"
-                                                     title="Link">🔗
+                                        <router-link class="link" :to="'#' + dialog.number + '.' + index" title="Szenensprungmarke">
+                                            <v-icon>mdi-link</v-icon>
                                         </router-link>
                                     </h2>
                                     <div class="textbox" v-if="scene.dialog">
                                         <h3 class="caption">Dialog</h3>
                                         <div class="textbox--text" v-if="Array.isArray(scene.dialog)">
-                                            <p v-for="(paragraph,index) in scene.dialog" :key="index">
-                                                <b>{{paragraph.char}}:</b>&nbsp;
-                                                <span v-html="paragraph.text.replace(/\[([^\]]*)\]\(([^)]*)\)/g, parseLink)"></span></p>
+                                            <div v-for="(paragraph,index) in scene.dialog" :key="index" :data-char="paragraph.char" v-html="dialog_paragraph(paragraph)" />
                                         </div>
-                                        <div class="textbox--text" v-else>{{scene.dialog}}</div>
+                                        <div class="textbox--text" v-else>{{html(scene.dialog)}}</div>
                                     </div>
                                     <div class="textbox" v-if="scene.book">
                                         <h3 class="caption">Buchtitel</h3>
-                                        <p class="textbox--text">{{scene.book}}</p>
+                                        <p class="textbox--text">{{html(scene.book)}}</p>
                                     </div>
                                     <div class="textbox" v-if="scene.action">
                                         <h3 class="caption">Handlung</h3>
-                                        <div class="textbox--text" v-html="scene.action.replace(/\[([^\]]*)\]\(([^)]*)\)/g, parseLink)
-"/>
+                                        <div class="textbox--text" v-html="html(scene.action)"/>
                                     </div>
                                     <div class="textbox" v-if="scene.useraction">
                                         <h3 class="caption">Benutzeraktion</h3>
-                                        <p class="textbox--text">{{scene.useraction}}</p>
+                                        <p class="textbox--text">{{html(scene.useraction)}}</p>
                                     </div>
                                 </v-card-text>
                             </v-col>
@@ -110,6 +108,7 @@
 <script>
     import {default as dialog_de} from "@/dialog.de";
     import {parseLink} from "@/plugins/helpers";
+    import {default as marked} from "marked";
 
     export default {
         name: "App",
@@ -141,6 +140,13 @@
             parseLink,
             toggle(dialog) {
                 this.dialog[dialog].open = !this.dialog[dialog].open;
+            },
+            html(input) {
+                input = input.replace(/\[([^\]]*)\]\(([^)]*)\)/g, parseLink)
+                return marked(input)
+            },
+            dialog_paragraph(paragraph) {
+                return this.html(`**${paragraph.char}**: ` + paragraph.text )
             }
         }
     };

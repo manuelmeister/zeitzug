@@ -138,6 +138,7 @@ export default [
     },
     {
         title:    "Private Bahnen vs. Staatsbahn",
+        title_short:    "Privat vs. Staat",
         number:   "2",
         desc:     "<p>Sara kommt mit der Schweizerischen Nordbahn in Zürich an. Sie verteilt spanische Brötli. Sie trifft auf [Alfred Escher](https://de.wikipedia.org/wiki/Alfred_Escher). Escher hat im Nationalrat den Schweizer Eisenbahnbau vorangetrieben. Die Schweizer Bevölkerung hat Angst, dass die Schweiz umfahren wird und somit den wirtschaftlichen Anschluss verliert. Es wird diskutiert, ob die Eisenbahnen vom Staat oder von Privaten geführt werden sollen. Man entscheidet sich dafür, dass jeder selber eine Eisenbahn bauen kann, damit Randregionen nicht lange warten müssen und die Macht der Kantone nicht eingeschränkt wird.</p><p>Escher hat die Vision, dass man die Alpen mit der Eisenbahn überqueren kann. Der [Gotthardtunnel](https://de.wikipedia.org/wiki/Gotthardtunnel) wird gebaut. Vor der Eröffnung wird Alfred leider schwer krank und kann nicht an der Eröffnungsfeier teilnehmen. Sara trifft bei der Rückfahrt auf [Josef Zemp](https://de.wikipedia.org/wiki/Josef_Zemp), der die Verstaatlichung der Eisenbahnen durchgeführt hat.</p>",
         animatic: "",
@@ -383,6 +384,48 @@ export default [
                     {char: "Emma", text: "Sara! Sara! Komm, ich möchte weiter, mir ist langweilig."},
                 ],
                 action: "Emma zupft Sara am Ärmel und reisst sie aus ihrer Gedankenwelt heraus."
+            },
+            {
+                image: 'img/5.14.png',
+                dialog: [
+                    {char: "Sara", text: "Och 😕. Ich hätte noch so viel Spannendes erfahren können."}
+                ],
+                action: "Seufzend klappt Sara das Buch zu."
+            },
+            {
+                image: 'img/5.15.png',
+                dialog: [
+                    {char: "Sara", text: "Stellt euch vor: Ich habe ganz viel über die Eisenbahnen in der Schweiz erfahren."},
+                    {char: "Sara", text: "Ich bin in der ersten Eisenbahn der Schweiz von Baden nach Zürich gefahren."},
+                    {char: "Sara", text: "Und wusstet ihr, warum die SBB gegründet wurde? Vorher konnte nämlich jeder, der Geld hatte, eine eigene Eisenbahn bauen. Das wurde auf die Dauer zu teuer und die Leute waren nicht mehr zufrieden."},
+                    {char: "Mama", text: "Dann hast du sicher auch erfahren, dass die Lokomotiven früher mit Kohle statt mit Strom fuhren."},
+                    {char: "Sara", text: "Genau. Ich finde es bloss merkwürdig, dass ich nur Männer angetroffen habe."},
+                    {char: "Papa", text: "Ja, leider durften Frauen damals nicht mitbestimmen und diese Berufe nicht ausüben. "},
+                ],
+                action: "Sara und Emma gehen zu ihren Eltern. In der Gedankenbubble wird die Zusammenfassung noch einmal gezeigt."
+            },
+            {
+                image: 'img/5.16.png',
+                dialog: [
+                    {char: "Sara", text: "Wirklich? Das kann ich fast nicht glauben. Ah schaut, hier steht sogar, dass es 100 Jahre gedauert hat, bis die erste Frau bei der SBB Lokführerin wurde."},
+                    {char: "Emma", text: "Hmm, wer weiss, vielleicht werde ich ja mal Lokführerin."}
+                ],
+                action: "Die Familie steht vor einem Facts Schild der SBB mit grossem Logo. In der Gedankenblase von Emma sieht man sie als Lokführerin."
+            },
+        ]
+    },
+    {
+        title:    "Zusatz",
+        number:   "6",
+        desc:     "",
+        animatic: "",
+        open:     false,
+        scenes:   [
+            {
+                dialog: [
+                    {char: "Sara", text: `Hallo, ich bin Sara. Kürzlich bin ich im Verkehrshaus in eine Lokomotive gestiegen und habe in einer Ecke dieses Buch gefunden. Es hat mich in der Zeit zurück katapultiert! Plötzlich stand mir ein Mann in altmodischem Anzug gegenüber. Stellt euch vor, wie verwundert ich war. Natürlich habe ich mir nichts anmerken lassen und bin einfach weiter durch die Schweizer Eisenbahngeschichte gereist.\n
+Seid ihr auch so neugierig wie ich? Kommt mit, dann könnt ihr es gleich selbst erleben!`},
+                ],
             },
             {
                 image: 'img/5.14.png',
