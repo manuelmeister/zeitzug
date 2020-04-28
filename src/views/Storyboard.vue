@@ -19,23 +19,16 @@
                                     <div class="textbox--text"
                                          v-html="html(dialog.desc)"/>
                                 </div>
-                                <div class="textbox" v-if="dialog.athmosphere">
-                                    <h3 class="caption">Atmosphäre</h3>
-                                    <div class="textbox--text"
-                                         v-html="html(dialog.athmosphere)"/>
-                                </div>
                                 <div class="textbox unprint" v-if="dialog.audio">
-                                    <h3 class="caption">Dialog</h3>
+                                    <h3 class="caption">Dialog (Audio)</h3>
                                     <div class="textbox--text audio">
                                         <audio controls :src="dialog.audio"/>
                                     </div>
                                 </div>
-                                <template v-if="dialog.open && dialog.animatic">
-                                    <h3 class="caption">Animatic</h3>
-                                    <div class="textbox--text video">
-                                        <div class="aspect-ratio-box" v-html="dialog.animatic"/>
-                                    </div>
-                                </template>
+                                <div class="textbox" v-for="field in dialog.custom">
+                                    <h3 class="caption">{{field.title}}</h3>
+                                    <div class="textbox--text" v-html="html(field.content)"/>
+                                </div>
                             </v-card-text>
                         </v-col>
                         <v-col cols="12" sm="5">
@@ -50,7 +43,7 @@
                         :key="dialog.number + '.' + index">
                     <v-toolbar flat v-if="$vuetify.breakpoint.smAndDown">
                         <v-toolbar-title>
-                            {{ dialog.number }}.{{index}}
+                            {{ dialog.number }}.{{index}} <span v-if="scene.title">{{scene.title}}</span>
                             <router-link class="link" :to="'#' + dialog.number + '.' + index" title="Szenensprungmarke">
                                 <v-icon>mdi-link</v-icon>
                             </router-link>
@@ -61,29 +54,31 @@
                             <v-col cols="12" md="7" order="2">
                                 <v-card-text>
                                     <h2 v-if="$vuetify.breakpoint.mdAndUp" class="pb-2 font-weight-regular">
-                                        {{ dialog.number }}.{{index}}
-                                        <router-link class="link" :to="'#' + dialog.number + '.' + index" title="Szenensprungmarke">
+                                        {{ dialog.number }}.{{index}} <span v-if="scene.title">{{scene.title}}</span>
+                                        <router-link class="link" :to="'#' + dialog.number + '.' + index"
+                                                     title="Szenensprungmarke">
                                             <v-icon>mdi-link</v-icon>
                                         </router-link>
                                     </h2>
                                     <div class="textbox" v-if="scene.dialog">
                                         <h3 class="caption">Dialog</h3>
                                         <div class="textbox--text" v-if="Array.isArray(scene.dialog)">
-                                            <div v-for="(paragraph,index) in scene.dialog" :key="index" :data-char="paragraph.char" v-html="dialog_paragraph(paragraph)" />
+                                            <div v-for="(paragraph,index) in scene.dialog" :key="index"
+                                                 :data-char="paragraph.char" v-html="dialog_paragraph(paragraph)"/>
                                         </div>
                                         <div class="textbox--text" v-else>{{html(scene.dialog)}}</div>
-                                    </div>
-                                    <div class="textbox" v-if="scene.book">
-                                        <h3 class="caption">Buchtitel</h3>
-                                        <p class="textbox--text">{{html(scene.book)}}</p>
                                     </div>
                                     <div class="textbox" v-if="scene.action">
                                         <h3 class="caption">Handlung</h3>
                                         <div class="textbox--text" v-html="html(scene.action)"/>
                                     </div>
-                                    <div class="textbox" v-if="scene.useraction">
-                                        <h3 class="caption">Benutzeraktion</h3>
-                                        <p class="textbox--text">{{html(scene.useraction)}}</p>
+                                    <div class="textbox" v-for="field in scene.custom">
+                                        <h3 class="caption">{{field.title}}</h3>
+                                        <div class="textbox--text" v-if="Array.isArray(field.content)">
+                                            <div v-for="(paragraph,index) in field.content" :key="index"
+                                                 :data-char="paragraph.char" v-html="dialog_paragraph(paragraph)"/>
+                                        </div>
+                                        <div class="textbox--text" v-else v-html="html(field.content)"/>
                                     </div>
                                 </v-card-text>
                             </v-col>
@@ -142,11 +137,13 @@
                 this.dialog[dialog].open = !this.dialog[dialog].open;
             },
             html(input) {
-                input = input.replace(/\[([^\]]*)\]\(([^)]*)\)/g, parseLink)
+                if (input) {
+                    input = input.replace(/\[([^\]]*)\]\(([^)]*)\)/g, parseLink)
+                }
                 return marked(input)
             },
             dialog_paragraph(paragraph) {
-                return this.html(`**${paragraph.char}**: ` + paragraph.text )
+                return this.html(`**${paragraph.char}**: ` + paragraph.text)
             }
         }
     };

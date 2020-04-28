@@ -4,7 +4,7 @@ export default [
         number:   "0",
         desc:     "Sara besucht das [Verkehrshaus (Museum)](https://de.wikipedia.org/wiki/Verkehrshaus_der_Schweiz) mit ihrer Familie. Ihre Schwester Emma will unbedingt zu den Zügen. Plötzlich findet Sara in einer Lokomotive ein altes Buch. Als sie es öffnet, wird sie ins Jahr 1846 katapultiert.",
         audio: "audio/E0.mp3",
-        athmosphere: "Ruhig, Museum, etwas verstaubt",
+        custom: [{title: "Athmosphäre", content:"Ruhig, Museum, etwas verstaubt"}],
         open:     false,
         scenes:   [
             {
@@ -33,7 +33,7 @@ export default [
                 action: "Sie wird in der Zeit zurückgeschleudert. Ab jetzt erscheint der Zeitstrahl im Buch."
             }, {
                 image:  "img/1.8.png",
-                useraction: "In der Learning App muss jetzt das nächste Kapitel geöffnet werden. Dafür geht der/die Benutzer*in zur passenden Lokomotive. Dort schaltet man die nächste Episode frei."
+                custom: { "Benutzeraktion": "In der Learning App muss jetzt das nächste Kapitel geöffnet werden. Dafür geht der/die Benutzer*in zur passenden Lokomotive. Dort schaltet man die nächste Episode frei."}
             }
         ]
     },
@@ -41,9 +41,8 @@ export default [
         title:    "Pionierzeit",
         number:   "1",
         desc:     '<p>Dort trifft Sara auf [Alois Negrelli](https://de.wikipedia.org/wiki/Alois_Negrelli_von_Moldelbe). Der hat gerade den Auftrag erhalten, eine Eisenbahnstrecke zwischen [Zürich und Baden](https://en.wikipedia.org/wiki/Z%C3%BCrich%E2%80%93Baden_railway) zu bauen. Es sei die erste ganze Strecke in der Schweiz, erklärt er. Für diese Strecke hatte man mit der Kutsche etwa dreimal so lange wie man mit dem Zug haben wird. Zuerst wollte die Regierung der Stadt Baden, dass der Bahnhof im Süden gebaut wird. Doch Negrelli war es wichtig, dass der Bahnhof auf der Nordseite gebaut wird, da dort das Gebiet flacher ist und der Bahnhof einfacher vergrössert werden kann.</p><p>Sie schaffen es und Negrelli gibt Sara [spanische Brötli](https://de.wikipedia.org/wiki/Spanisch_Br%C3%B6tli) mit auf die erste Fahrt nach Zürich.</p>',
-        //animatic: "<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/DGA1rU3M4PY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"></iframe>",
         open:     false,
-        athmosphere: "Weite Landschaften, Goldgräberstimmung, unbekanntes Terrain",
+        custom: [{title: "Athmosphäre", content:"Weite Landschaften, Goldgräberstimmung, unbekanntes Terrain"}],
         audio: 'audio/E1.mp3',
         scenes:   [
             {
@@ -132,7 +131,7 @@ export default [
             },
             {
                 image:  "img/3.16.png",
-                action: "Benutzer*in muss Lokomotive «Elefant» einscannen."
+                custom: [{ title: "Benutzeraktion", content: "Benutzer*in muss Lokomotive «Elefant» einscannen."}]
             },
         ]
     },
@@ -140,9 +139,8 @@ export default [
         title:    "Private Bahnen vs. Staatsbahn",
         title_short:    "Privat vs. Staat",
         number:   "2",
-        desc:     "<p>Sara kommt mit der Schweizerischen Nordbahn in Zürich an. Sie verteilt spanische Brötli. Sie trifft auf [Alfred Escher](https://de.wikipedia.org/wiki/Alfred_Escher). Escher hat im Nationalrat den Schweizer Eisenbahnbau vorangetrieben. Die Schweizer Bevölkerung hat Angst, dass die Schweiz umfahren wird und somit den wirtschaftlichen Anschluss verliert. Es wird diskutiert, ob die Eisenbahnen vom Staat oder von Privaten geführt werden sollen. Man entscheidet sich dafür, dass jeder selber eine Eisenbahn bauen kann, damit Randregionen nicht lange warten müssen und die Macht der Kantone nicht eingeschränkt wird.</p><p>Escher hat die Vision, dass man die Alpen mit der Eisenbahn überqueren kann. Der [Gotthardtunnel](https://de.wikipedia.org/wiki/Gotthardtunnel) wird gebaut. Vor der Eröffnung wird Alfred leider schwer krank und kann nicht an der Eröffnungsfeier teilnehmen. Sara trifft bei der Rückfahrt auf [Josef Zemp](https://de.wikipedia.org/wiki/Josef_Zemp), der die Verstaatlichung der Eisenbahnen durchgeführt hat.</p>",
-        animatic: "",
-        athmosphere: "Es kommt alles in Fahrt. Im Büro von Escher, eher drückend. Im Zug mit Zemp eher windig",
+        desc:     "Sara kommt mit der Schweizerischen Nordbahn in Zürich an. Sie verteilt spanische Brötli. Sie trifft auf [Alfred Escher](https://de.wikipedia.org/wiki/Alfred_Escher). Escher hat im Nationalrat den Schweizer Eisenbahnbau vorangetrieben. Die Schweizer Bevölkerung hat Angst, dass die Schweiz umfahren wird und somit den wirtschaftlichen Anschluss verliert. Es wird diskutiert, ob die Eisenbahnen vom Staat oder von Privaten geführt werden sollen. Man entscheidet sich dafür, dass jeder selber eine Eisenbahn bauen kann, damit Randregionen nicht lange warten müssen und die Macht der Kantone nicht eingeschränkt wird.\n\nEscher hat die Vision, dass man die Alpen mit der Eisenbahn überqueren kann. Der [Gotthardtunnel](https://de.wikipedia.org/wiki/Gotthardtunnel) wird gebaut. Vor der Eröffnung wird Alfred leider schwer krank und kann nicht an der Eröffnungsfeier teilnehmen. Sara trifft auf der Rückfahrt auf [Josef Zemp](https://de.wikipedia.org/wiki/Josef_Zemp), der die Verstaatlichung der Eisenbahnen durchgeführt hat.",
+        custom: [{title: "Athmosphäre", content:"Es kommt alles in Fahrt. Im Büro von Escher, eher drückend. Im Zug mit Zemp eher windig"}],
         audio: "audio/E2.mp3",
         open:     false,
         scenes:   [
@@ -219,7 +217,7 @@ export default [
                 action: "In Gedankenbubble sieht man ein Bild vom kranken Escher."
             }, {
                 image:  "img/3.7.png",
-                book: "Gotthard-Einweihung",
+                custom: [{title:"Buchtitel", content: "Gotthard-Einweihung"}],
                 action: "Sara blättert weiter im Buch."
             }, {
                 image:  "img/4.2 2.png",
@@ -268,7 +266,7 @@ export default [
                 action: "Sie blättert erneut und wird in der Zeit vorwärts geschleudert."
             }, {
                 image:  "img/4.12.png",
-                action: "Benutzer*in muss Lokomotive «Krokodil» einscannen."
+                custom: [{ title:"Benutzeraktion", content: "Benutzer*in muss Lokomotive «Krokodil» einscannen."}]
             }
         ]
     },
@@ -276,8 +274,7 @@ export default [
         title:    "Elektrifizierung",
         number:   "3",
         desc:     "<p>Sara trifft auf [Robert Haab](https://de.wikipedia.org/wiki/Robert_Haab), den Generaldirektor der [SBB](https://de.wikipedia.org/wiki/Schweizerische_Bundesbahnen). Der 1. Weltkrieg beginnt. Die Kohle wird langsam knapp. Die SBB steckt in grossen finanziellen Schwierigkeiten. Die Elektrifizierung ist die Lösung für beide Probleme. Haab will alles elektrifizieren. Sara möchte bei der ersten Fahrt der elekrifizierten [Krokodil-Lokomotive](https://de.wikipedia.org/wiki/Krokodil_(Lokomotive)) von Thun nach Bern dabei sein.",
-        animatic: "",
-        athmosphere: "Krise, Krieg, Ungewissheit, dann erleichtert und motiviert",
+        custom: [{title: "Athmosphäre", content: "Krise, Krieg, Ungewissheit, dann erleichtert und motiviert"}],
         audio: "audio/E3.mp3",
         open:     false,
         scenes:   [
@@ -373,8 +370,7 @@ export default [
         title:    "Ende",
         number:   "5",
         desc:     "Sara wird in die Gegenwart zurückgeholt. Sie fasst kurz zusammen, was sie alles erlebt hat. Sie fragt ihre Eltern, warum in der Eisenbahngeschichte nur Männer vorkamen. Emma findet, dass sie gerne Lokführerin werden möchte.",
-        animatic: "",
-        athmosphere: "Etwas benommen von der Reise, aber begeistert",
+        custom: [{title: "Athmosphäre", content: "Etwas benommen von der Reise, aber begeistert"}],
         audio: "audio/Ende.mp3",
         open:     false,
         scenes:   [
@@ -417,42 +413,25 @@ export default [
     {
         title:    "Zusatz",
         number:   "6",
-        desc:     "",
-        animatic: "",
-        open:     false,
-        scenes:   [
+        desc:     "Unabhängig von der Geschichte kommt Sara in zwei kurzen Filmen für die Arbeit vor. Im Werbefilm für Schulklassen macht sie Kindern das Webapp schmackhaft. Im Kurzfilm für die Diplompräsentation stellt sie die praktische Bachelorarbeit von Manuel Meister vor. ",
+        open: false,
+        scenes: [
             {
-                dialog: [
-                    {char: "Sara", text: `Hallo, ich bin Sara. Kürzlich bin ich im Verkehrshaus in eine Lokomotive gestiegen und habe in einer Ecke dieses Buch gefunden. Es hat mich in der Zeit zurück katapultiert! Plötzlich stand mir ein Mann in altmodischem Anzug gegenüber. Stellt euch vor, wie verwundert ich war. Natürlich habe ich mir nichts anmerken lassen und bin einfach weiter durch die Schweizer Eisenbahngeschichte gereist.\n
-Seid ihr auch so neugierig wie ich? Kommt mit, dann könnt ihr es gleich selbst erleben!`},
-                ],
+                title: "Werbefilm für Schulklassen",
+                custom: [{
+                    title: "Text",
+                    content: [{char: "Sara", text: "Hallo, ich bin Sara. Kürzlich bin ich im Verkehrshaus in eine Lokomotive gestiegen und habe in einer Ecke dieses Buch gefunden. Es hat mich in der Zeit zurück katapultiert! Plötzlich stand mir ein Mann in altmodischem Anzug gegenüber. Stellt euch vor, wie verwundert ich war. Natürlich habe ich mir nichts anmerken lassen und bin einfach weiter durch die Schweizer Eisenbahngeschichte gereist.\n\nSeid ihr auch so neugierig wie ich? Kommt mit, dann könnt ihr es gleich selbst erleben!"},],
+                }],
             },
             {
-                image: 'img/5.14.png',
-                dialog: [
-                    {char: "Sara", text: "Och 😕. Ich hätte noch so viel Spannendes erfahren können."}
-                ],
-                action: "Seufzend klappt Sara das Buch zu."
-            },
-            {
-                image: 'img/5.15.png',
-                dialog: [
-                    {char: "Sara", text: "Stellt euch vor: Ich habe ganz viel über die Eisenbahnen in der Schweiz erfahren."},
-                    {char: "Sara", text: "Ich bin in der ersten Eisenbahn der Schweiz von Baden nach Zürich gefahren."},
-                    {char: "Sara", text: "Und wusstet ihr, warum die SBB gegründet wurde? Vorher konnte nämlich jeder, der Geld hatte, eine eigene Eisenbahn bauen. Das wurde auf die Dauer zu teuer und die Leute waren nicht mehr zufrieden."},
-                    {char: "Mama", text: "Dann hast du sicher auch erfahren, dass die Lokomotiven früher mit Kohle statt mit Strom fuhren."},
-                    {char: "Sara", text: "Genau. Ich finde es bloss merkwürdig, dass ich nur Männer angetroffen habe."},
-                    {char: "Papa", text: "Ja, leider durften Frauen damals nicht mitbestimmen und diese Berufe nicht ausüben. "},
-                ],
-                action: "Sara und Emma gehen zu ihren Eltern. In der Gedankenbubble wird die Zusammenfassung noch einmal gezeigt."
-            },
-            {
-                image: 'img/5.16.png',
-                dialog: [
-                    {char: "Sara", text: "Wirklich? Das kann ich fast nicht glauben. Ah schaut, hier steht sogar, dass es 100 Jahre gedauert hat, bis die erste Frau bei der SBB Lokführerin wurde."},
-                    {char: "Emma", text: "Hmm, wer weiss, vielleicht werde ich ja mal Lokführerin."}
-                ],
-                action: "Die Familie steht vor einem Facts Schild der SBB mit grossem Logo. In der Gedankenblase von Emma sieht man sie als Lokführerin."
+                title: "Kurzfilm für Diplompräsentation",
+                custom: [{
+                    title: "Einstieg",
+                    content: [{char: "Sara", text: "Das ist Manuel. Schon als kleiner Junge stand er an den Gleisen und schaute den Zügen nach.Ich bin eigentlich nicht so begeistert von Eisenbahnen wie Manuel. Aber kürzlich bin ich im Verkehrshaus in Luzern auf dieses Buch gestossen. Seite für Seite bin ich durch die Schweizer Eisenbahngeschichte gereist. Ihr könnt euch gar nicht vorstellen, was für interessante Persönlichkeiten ich auf dieser Zeitreise angetroffen habe. Wollt ihr mehr darüber wissen?\n\nKommt mit! Dann erzählt euch Manuel auch, wie er aus komplexen historischen Ereignissen spannende Geschichten für Kinder geschaffen hat."}],
+                }, {
+                    title: "Schluss",
+                    content: [{char: "Sara", text: "Wie schon gesagt: Eigentlich bin ich ja nicht so ein Eisenbahn-Fan. Aber in letzter Zeit habe ich mich öfters dabei ertappt, wie auch *ich* neugierig den Zügen nachgeschaut habe…"}]
+                }],
             },
         ]
     }
