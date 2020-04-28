@@ -6,9 +6,7 @@ module.exports = {
             .loader('url-loader')
             .tap(options => Object.assign(options, {limit: 10240}))
     },
-    publicPath: process.env.NODE_ENV === 'production'
-        ? '/ba/'
-        : '/',
+    publicPath: '/',
     transpileDependencies: [
         "vuetify"
     ]

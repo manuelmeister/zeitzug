@@ -16,7 +16,7 @@
                     </li>
                     <li><h3>Emma</h3>
                         <h4>Schwester der Protagonistin</h4>
-                        Die jüngere nerfige Schwester von Sara. Sie ist fasziniert von Zügen.
+                        Die jüngere nervige Schwester von Sara. Sie ist fasziniert von Zügen.
                     </li>
                     <li><h3>Alois Negrelli</h3>
                         <h4>Experte der 1. Episode </h4>

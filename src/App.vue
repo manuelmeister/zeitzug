@@ -16,7 +16,7 @@
             <v-spacer/>
             <v-toolbar-items>
                 <v-btn text :to="{name: 'Storyboard'}">Storyboard</v-btn>
-                <v-btn text :to="{name: 'Characters'}">Charakter</v-btn>
+                <v-btn text :to="{name: 'Characters'}">Charaktere</v-btn>
                 <v-btn text :to="{name: 'About'}">Über das Projekt</v-btn>
             </v-toolbar-items>
 
@@ -25,7 +25,8 @@
             </template>
         </v-app-bar>
         <v-bottom-navigation app grow style="z-index: 10" v-if="$vuetify.breakpoint.smAndDown">
-            <v-app-bar-nav-icon v-if="$route.name === 'Storyboard'" @click="open = true" style="margin-left: -32px;margin-right: -16px">
+            <v-app-bar-nav-icon v-if="$route.name === 'Storyboard'" @click="open = true"
+                                style="margin-left: -32px;margin-right: -16px">
             </v-app-bar-nav-icon>
             <v-btn text :to="{name: 'Storyboard'}">
                 Storyboard
@@ -102,10 +103,12 @@
             },
         },
         mounted() {
-            let hash = location.hash;
-            this.$router.replace({hash: '#' + location.hash.charAt(1), params: {stay: true}});
-            this.$router.replace({hash: hash, params: {stay: true}});
-            this.findActiveIndex();
+            if (this.$route.name === 'Storyboard') {
+                let hash = location.hash;
+                this.$router.replace({hash: '#' + location.hash.charAt(1), params: {stay: true}});
+                this.$router.replace({hash: hash, params: {stay: true}});
+                this.findActiveIndex();
+            }
         },
         methods: {
             findActiveIndex() {

@@ -16,7 +16,7 @@
                 </v-avatar>
                 <p>
                     Manuel Meister studiert <a target="_blank" href="https://cast.zhdk.ch/">Cast / Audiovisual Media <i class="v-icon mdi small mdi-open-in-new"/></a> an der <a
-                       target="_blank" href="https://zhdk.ch/">Zürcher Hochschule der Künste <i class="v-icon mdi small mdi-open-in-new"/></a>. Vor seindem Studium hat er das
+                       target="_blank" href="https://zhdk.ch/">Zürcher Hochschule der Künste <i class="v-icon mdi small mdi-open-in-new"/></a>. Vor seinem Studium hat er das
                     Gymnasium mit Schwerpunktfach Bildnerisches Gestalten
                     und eine Way-Up Lehre als Informatiker bei der Schweizerischen Post absolviert.
                 </p>
