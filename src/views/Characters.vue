@@ -4,9 +4,15 @@
             <h1 class="display-1 pa-4 pt-8">
                 Die Charaktere
             </h1>
-            <v-img src="img/chars.jpg" />
-            <v-card-text>
+            <figure>
 
+                <v-img src="img/chars.jpg"/>
+                <figcaption class="text-center">
+                    <p class="body-2">Die Charaktere wurden von <a href="https://www.behance.net/irmirx">Irina Mir<i
+                            class="v-icon mdi small mdi-open-in-new"/></a> erstellt.</p>
+                </figcaption>
+            </figure>
+            <v-card-text>
                 <ol>
                     <li><h3>Sara</h3>
                         <h4>Hauptprotagonistin</h4>

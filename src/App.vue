@@ -10,7 +10,8 @@
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
-        <v-app-bar app color="primary" dark hide-on-scroll :extended="$route.name === 'Storyboard' && $vuetify.breakpoint.mdAndUp"
+        <v-app-bar app color="primary" dark hide-on-scroll
+                   :extended="$route.name === 'Storyboard' && $vuetify.breakpoint.mdAndUp"
                    clipped-left>
             <v-list-item two-line>
                 <v-list-item-content>
@@ -21,7 +22,15 @@
             <v-spacer/>
             <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
                 <v-btn text :to="{name: 'Storyboard'}">Storyboard</v-btn>
-                <v-btn text :to="{name: 'Characters'}">Charaktere</v-btn>
+                <v-menu offset-y>
+                    <template v-slot:activator="{on}">
+                        <v-btn text v-on="on">Ressourcen</v-btn>
+                    </template>
+                    <v-list>
+                        <v-list-item text :to="{name: 'Characters'}">Charaktere</v-list-item>
+                        <v-list-item text :to="{name: 'Backgrounds'}">Hintergründe</v-list-item>
+                    </v-list>
+                </v-menu>
                 <v-btn text :to="{name: 'About'}">Über das Projekt</v-btn>
             </v-toolbar-items>
 
@@ -81,7 +90,7 @@
                 for (const dialog of this.dialogs) {
                     result.push({
                         id: dialog.number + '',
-                        text: dialog.title_short ? dialog.title_short : dialog.title ,
+                        text: dialog.title_short ? dialog.title_short : dialog.title,
                         parent: parseInt(dialog.number)
                     });
                     result.push(...dialog.scenes.map(
