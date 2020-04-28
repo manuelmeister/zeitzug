@@ -139,8 +139,9 @@
             html(input) {
                 if (input) {
                     input = input.replace(/\[([^\]]*)\]\(([^)]*)\)/g, parseLink)
+                    return marked(input)
                 }
-                return marked(input)
+                return ''
             },
             dialog_paragraph(paragraph) {
                 return this.html(`**${paragraph.char}**: ` + paragraph.text)
