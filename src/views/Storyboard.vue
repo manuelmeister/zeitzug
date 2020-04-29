@@ -20,9 +20,7 @@
                             </div>
                             <div class="textbox unprint" v-if="dialog.audio">
                                 <h3 class="caption">Dialog (Audio)</h3>
-                                <div class="textbox--text audio">
-                                    <audio controls :src="dialog.audio"/>
-                                </div>
+                                <audio-player :src="dialog.audio"/>
                             </div>
                             <div class="textbox" v-for="field in dialog.custom">
                                 <h3 class="caption">{{field.title}}</h3>
@@ -100,9 +98,11 @@
     import {default as dialog_de} from "@/dialog.de";
     import {parseLink} from "@/plugins/helpers";
     import {default as marked} from "marked";
+    import AudioPlayer from "@/components/AudioPlayer";
 
     export default {
         name: "App",
+        components: {AudioPlayer},
         data() {
             return {
                 dialog: dialog_de
@@ -196,9 +196,7 @@
     .textbox--text {
         //border: 3px solid #eeeeee;
         background: #eeeeee;
-        border-bottom-left-radius: 2px;
-        border-bottom-right-radius: 2px;
-        border-top-right-radius: 2px;
+        border-radius: 2px;
         padding: 4px;
 
         &.audio {

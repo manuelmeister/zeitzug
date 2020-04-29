@@ -126,41 +126,43 @@
         },
         methods: {
             findActiveIndex() {
-                if (this.currentOffset < 100 && this.$route.hash.charAt(1) === '0') {
-                    this.activeIndex = 0
+                if (this.$route.name === 'Storyboard') {
+                    if (this.currentOffset < 100 && this.$route.hash.charAt(1) === '0') {
+                        this.activeIndex = 0
 
-                    let newHash = '#0'
+                        let newHash = '#0'
 
-                    if (!(this.$route.hash.includes(newHash) || this.$route.hash === newHash)) {
-                        this.$router.push({hash: newHash, params: {stay: true}});
-                    }
-                    return
-                }
-
-                const list = this.toc.slice().reverse()
-                let index = list.findIndex(item => {
-                    const section = document.getElementById('' + item.id)
-
-                    if (!section) return false
-
-                    return section.offsetTop - 100 < this.currentOffset
-                })
-
-                let item = list[index]
-
-                const lastIndex = this.internalToc.length - 1
-
-                let newHash = '#' + item.id;
-                if (lastIndex > -1 && !(this.$route.hash.includes(newHash) || this.$route.hash === newHash)) {
-                    if (this.$route.hash.charAt(1) !== newHash.charAt(1)) {
-                        this.$router.replace({hash: '#' + item.parent, params: {stay: true}});
-                    } else {
-                        this.$router.replace({hash: newHash, params: {stay: true}});
+                        if (!(this.$route.hash.includes(newHash) || this.$route.hash === newHash)) {
+                            this.$router.push({hash: newHash, params: {stay: true}});
+                        }
+                        return
                     }
 
-                    this.activeIndex = item.parent > -1 ? lastIndex - item.parent : lastIndex
-                }
+                    const list = this.toc.slice().reverse()
+                    let index = list.findIndex(item => {
+                        const section = document.getElementById('' + item.id)
 
+                        if (!section) return false
+
+                        return section.offsetTop - 100 < this.currentOffset
+                    })
+
+                    let item = list[index]
+
+                    const lastIndex = this.internalToc.length - 1
+
+                    let newHash = '#' + item.id;
+                    if (lastIndex > -1 && !(this.$route.hash.includes(newHash) || this.$route.hash === newHash)) {
+                        if (this.$route.hash.charAt(1) !== newHash.charAt(1)) {
+                            this.$router.replace({hash: '#' + item.parent, params: {stay: true}});
+                        } else {
+                            this.$router.replace({hash: newHash, params: {stay: true}});
+                        }
+
+                        this.activeIndex = item.parent > -1 ? lastIndex - item.parent : lastIndex
+                    }
+
+                }
             },
             onScroll() {
                 this.currentOffset = (
@@ -178,85 +180,8 @@
 </script>
 <style lang="scss">
     @import "src/styles/overrides";
+    @import "src/styles/mdi";
     //@import '../node_modules/@mdi/font/css/materialdesignicons.css';
-
-    /* MaterialDesignIcons.com */
-    @font-face {
-        font-family: "Material Design Icons";
-        src: url("~@mdi/font/fonts/materialdesignicons-webfont.eot?v=5.1.45");
-        src: url("~@mdi/font/fonts/materialdesignicons-webfont.eot?#iefix&v=5.1.45") format("embedded-opentype"), url("~@mdi/font/fonts/materialdesignicons-webfont.woff2?v=5.1.45") format("woff2"), url("~@mdi/font/fonts/materialdesignicons-webfont.woff?v=5.1.45") format("woff"), url("~@mdi/font/fonts/materialdesignicons-webfont.ttf?v=5.1.45") format("truetype");
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
-
-    .mdi:before,
-    .mdi-set {
-        display: inline-block;
-        font: normal normal normal 24px/1 "Material Design Icons";
-        font-size: inherit;
-        text-rendering: auto;
-        line-height: inherit;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    .mdi-link::before {
-        content: "\F0337";
-    }
-
-    .mdi-information-outline::before {
-        content: "\F02FD";
-    }
-
-    .mdi-open-in-new::before {
-        content: "\F03CC";
-    }
-
-    .mdi-account-multiple::before {
-        content: "\F000E";
-    }
-
-    .mdi-blank::before {
-        content: "\F68C";
-        visibility: hidden;
-    }
-
-    .mdi-18px.mdi-set, .mdi-18px.mdi:before {
-        font-size: 18px;
-    }
-
-    .mdi-24px.mdi-set, .mdi-24px.mdi:before {
-        font-size: 24px;
-    }
-
-    .mdi-36px.mdi-set, .mdi-36px.mdi:before {
-        font-size: 36px;
-    }
-
-    .mdi-48px.mdi-set, .mdi-48px.mdi:before {
-        font-size: 48px;
-    }
-
-    .mdi-dark:before {
-        color: rgba(0, 0, 0, 0.54);
-    }
-
-    .mdi-dark.mdi-inactive:before {
-        color: rgba(0, 0, 0, 0.26);
-    }
-
-    .mdi-light:before {
-        color: white;
-    }
-
-    .mdi-light.mdi-inactive:before {
-        color: rgba(255, 255, 255, 0.3);
-    }
-
-    .mdi-clipboard-play-multiple-outline::before {
-        content: "\F126A";
-    }
 
     a {
         text-decoration: none;
