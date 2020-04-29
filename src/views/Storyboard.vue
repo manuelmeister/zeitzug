@@ -12,24 +12,22 @@
                 </v-toolbar>
                 <v-container fluid class="pa-0">
                     <v-row no-gutters>
-                        <v-col cols="12" sm="7">
-                            <v-card-text>
-                                <div class="textbox">
-                                    <h3 class="caption">Beschreibung</h3>
-                                    <div class="textbox--text"
-                                         v-html="html(dialog.desc)"/>
+                        <v-col cols="12" sm="7" class="pa-4">
+                            <div class="textbox">
+                                <h3 class="caption">Beschreibung</h3>
+                                <div class="textbox--text"
+                                     v-html="html(dialog.desc)"/>
+                            </div>
+                            <div class="textbox unprint" v-if="dialog.audio">
+                                <h3 class="caption">Dialog (Audio)</h3>
+                                <div class="textbox--text audio">
+                                    <audio controls :src="dialog.audio"/>
                                 </div>
-                                <div class="textbox unprint" v-if="dialog.audio">
-                                    <h3 class="caption">Dialog (Audio)</h3>
-                                    <div class="textbox--text audio">
-                                        <audio controls :src="dialog.audio"/>
-                                    </div>
-                                </div>
-                                <div class="textbox" v-for="field in dialog.custom">
-                                    <h3 class="caption">{{field.title}}</h3>
-                                    <div class="textbox--text" v-html="html(field.content)"/>
-                                </div>
-                            </v-card-text>
+                            </div>
+                            <div class="textbox" v-for="field in dialog.custom">
+                                <h3 class="caption">{{field.title}}</h3>
+                                <div class="textbox--text" v-html="html(field.content)"/>
+                            </div>
                         </v-col>
                         <v-col cols="12" sm="5">
                             <v-img aspect-ratio="1.7778" v-if="dialog.image" :src="dialog.image"/>
@@ -51,36 +49,34 @@
                     </v-toolbar>
                     <v-container fluid class="pa-0">
                         <v-row no-gutters>
-                            <v-col cols="12" md="7" order="2">
-                                <v-card-text>
-                                    <h2 v-if="$vuetify.breakpoint.mdAndUp" class="pb-2 font-weight-regular">
-                                        {{ dialog.number }}.{{index}} <span v-if="scene.title">{{scene.title}}</span>
-                                        <router-link class="link" :to="'#' + dialog.number + '.' + index"
-                                                     title="Szenensprungmarke">
-                                            <v-icon>mdi-link</v-icon>
-                                        </router-link>
-                                    </h2>
-                                    <div class="textbox" v-if="scene.dialog">
-                                        <h3 class="caption">Dialog</h3>
-                                        <div class="textbox--text" v-if="Array.isArray(scene.dialog)">
-                                            <div v-for="(paragraph,index) in scene.dialog" :key="index"
-                                                 :data-char="paragraph.char" v-html="dialog_paragraph(paragraph)"/>
-                                        </div>
-                                        <div class="textbox--text" v-else>{{html(scene.dialog)}}</div>
+                            <v-col cols="12" md="7" order="2" class="pa-4">
+                                <h2 v-if="$vuetify.breakpoint.mdAndUp" class="pb-2 font-weight-regular">
+                                    {{ dialog.number }}.{{index}} <span v-if="scene.title">{{scene.title}}</span>
+                                    <router-link class="link" :to="'#' + dialog.number + '.' + index"
+                                                 title="Szenensprungmarke">
+                                        <v-icon>mdi-link</v-icon>
+                                    </router-link>
+                                </h2>
+                                <div class="textbox" v-if="scene.dialog">
+                                    <h3 class="caption">Dialog</h3>
+                                    <div class="textbox--text" v-if="Array.isArray(scene.dialog)">
+                                        <div v-for="(paragraph,index) in scene.dialog" :key="index"
+                                             :data-char="paragraph.char" v-html="dialog_paragraph(paragraph)"/>
                                     </div>
-                                    <div class="textbox" v-if="scene.action">
-                                        <h3 class="caption">Handlung</h3>
-                                        <div class="textbox--text" v-html="html(scene.action)"/>
+                                    <div class="textbox--text" v-else>{{html(scene.dialog)}}</div>
+                                </div>
+                                <div class="textbox" v-if="scene.action">
+                                    <h3 class="caption">Handlung</h3>
+                                    <div class="textbox--text" v-html="html(scene.action)"/>
+                                </div>
+                                <div class="textbox" v-for="field in scene.custom">
+                                    <h3 class="caption">{{field.title}}</h3>
+                                    <div class="textbox--text" v-if="Array.isArray(field.content)">
+                                        <div v-for="(paragraph,index) in field.content" :key="index"
+                                             :data-char="paragraph.char" v-html="dialog_paragraph(paragraph)"/>
                                     </div>
-                                    <div class="textbox" v-for="field in scene.custom">
-                                        <h3 class="caption">{{field.title}}</h3>
-                                        <div class="textbox--text" v-if="Array.isArray(field.content)">
-                                            <div v-for="(paragraph,index) in field.content" :key="index"
-                                                 :data-char="paragraph.char" v-html="dialog_paragraph(paragraph)"/>
-                                        </div>
-                                        <div class="textbox--text" v-else v-html="html(field.content)"/>
-                                    </div>
-                                </v-card-text>
+                                    <div class="textbox--text" v-else v-html="html(field.content)"/>
+                                </div>
                             </v-col>
                             <v-col cols="12" md="5" order="0" order-md="2">
                                 <v-img v-if="scene.image" aspect-ratio="1.7778" :src="scene.image"/>
