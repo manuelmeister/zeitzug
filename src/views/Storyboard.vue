@@ -83,7 +83,7 @@
                                 </v-card-text>
                             </v-col>
                             <v-col cols="12" md="5" order="0" order-md="2">
-                                <v-img v-if="scene.image" aspect-ratio="1.7778" eager :src="scene.image"/>
+                                <v-img v-if="scene.image" aspect-ratio="1.7778" :src="scene.image"/>
                             </v-col>
                         </v-row>
                     </v-container>
