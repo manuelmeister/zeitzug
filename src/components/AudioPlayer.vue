@@ -23,7 +23,10 @@
                 <v-icon>mdi-download</v-icon>
             </v-btn>
         </div>
-        <audio id="player" ref="player" v-on:ended="ended" v-on:canplay="canPlay" :src="src"></audio>
+        <audio id="player" ref="player" v-on:ended="ended" v-on:canplay="canPlay">
+            <source v-if="!Array.isArray(src)" :src="src">
+            <source v-else v-for="source in src" :src="source">
+        </audio>
     </v-card>
 </template>
 <script>
@@ -36,7 +39,7 @@
         name: 'audio-player',
         props: {
             src: {
-                type: String,
+                type: String | Array,
                 default: null
             },
             autoPlay: {
@@ -124,7 +127,11 @@
             },
             download() {
                 this.audio.pause()
-                window.open(this.src, 'download')
+                if(Array.isArray(this.src)){
+                    window.open(this.src[0], 'download')
+                } else {
+                    window.open(this.src, 'download')
+                }
             },
             mute() {
                 this.isMuted = !this.isMuted

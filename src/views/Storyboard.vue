@@ -59,7 +59,12 @@
                                     <h3 class="caption">Dialog</h3>
                                     <div class="textbox--text" v-if="Array.isArray(scene.dialog)">
                                         <div v-for="(paragraph,index) in scene.dialog" :key="index"
-                                             :data-char="paragraph.char" v-html="dialog_paragraph(paragraph)"/>
+                                             :data-char="paragraph.char">
+                                            <p>
+                                                <router-link class="char_link" title="Charakter anschauen" :to="{name: 'Characters', hash:'#'+paragraph.char,params:{stay:false} }">{{paragraph.char}}</router-link>:
+                                                <span v-html="dialog_paragraph(paragraph)"/>
+                                            </p>
+                                        </div>
                                     </div>
                                     <div class="textbox--text" v-else>{{html(scene.dialog)}}</div>
                                 </div>
@@ -97,7 +102,7 @@
 <script>
     import {default as dialog_de} from "@/dialog.de";
     import {parseLink} from "@/plugins/helpers";
-    import {default as marked} from "marked";
+    import marked from "marked";
     import AudioPlayer from "@/components/AudioPlayer";
 
     export default {
@@ -129,18 +134,23 @@
         },
         methods: {
             parseLink,
+            marked,
             toggle(dialog) {
                 this.dialog[dialog].open = !this.dialog[dialog].open;
             },
             html(input) {
                 if (input) {
                     input = input.replace(/\[([^\]]*)\]\(([^)]*)\)/g, parseLink)
-                    return marked(input)
+                    let markdown = this.marked(input);
+                    if (markdown.match(/^<p>(.*)<\/p>$/gm)) {
+                        return markdown.matchAll(/^<p>(.*)<\/p>$/gm).next().value[1]
+                    }
+                    return markdown
                 }
                 return ''
             },
             dialog_paragraph(paragraph) {
-                return this.html(`**${paragraph.char}**: ` + paragraph.text)
+                return this.html(paragraph.text)
             }
         }
     };
@@ -175,6 +185,12 @@
     .scene-wrapper .v-card {
         border-top-right-radius: 0 !important;
         border-top-left-radius: 0 !important;
+    }
+
+    .char_link {
+        text-decoration: underline;
+        font-weight: 600;
+        color: inherit!important;
     }
 
     .textbox {

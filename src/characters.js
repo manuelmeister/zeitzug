@@ -1,0 +1,57 @@
+export default [
+    {
+        number: 1,
+        name: 'Sara',
+        role: 'Hauptprotagonistin',
+        desc: 'Sara ist ein Mädchen im Alter von 12 Jahren. Sie ist sehr wissbegierig und fordert gerne die Erwachsenen heraus. Sie weiss noch nicht genau, was sie mal werden will. In ihrer Freizeit geht sie gerne schwimmen und ist in der Pfadi. Ausserdem liest sie gerne Bücher in ihrem Baumhaus.',
+    },
+    {
+        number: 2,
+        name: 'Emma',
+        role: 'Schwester von Sara',
+        desc: 'Die jüngere nervige Schwester von Sara. Sie ist fasziniert von Zügen.',
+    },
+    {
+        number: 3,
+        firstname: 'Alois',
+        name: 'Negrelli',
+        role: 'Experte der 1. Episode',
+        voiceover: ['audio/voiceover/kurt/Negrelli.WAV','audio/voiceover/kurt/Negrelli.mp3'],
+        desc: 'Hauptingenieur der ersten schweizerischen Eisenbahn (um 1840)  \nfreundlich, etwas hochnäsig, aus Österreich (nicht Dialekt, höchstens Färbung)',
+    },
+    {
+        number: 4,
+        firstname: 'Alfred',
+        name: 'Escher',
+        role: 'Hauptexperte der 2. Episode',
+        voiceover: ['audio/voiceover/kurt/Escher.WAV','audio/voiceover/kurt/Escher.mp3'],
+        desc: 'liberaler Geschäftsmann, Eisenbahnpionier (um 1880)  \netwas mürrisch, workaholic, reich und visionär',
+    },
+    {
+        number: 5,
+        firstname: 'Josef',
+        name: 'Zemp',
+        role: 'Zweitexperte der 2. Episode',
+        voiceover: ['audio/voiceover/kurt/Zemp.WAV','audio/voiceover/kurt/Zemp.mp3'],
+        desc: 'Bundesrat, ursprünglich katholisch konservativ, danach Wandel zum Realpolitiker (um 1900)  \nversöhnlich, aus der Innerschweiz, sympathisch',
+    },
+    {
+        number: 6,
+        firstname: 'Robert',
+        name: 'Haab',
+        role: 'Experte der 3. Episode',
+        voiceover: ['audio/voiceover/kurt/Haab.WAV','audio/voiceover/kurt/Haab.mp3'],
+        desc: 'Jurist, Generaldirektor der SBB, dann Bundesrat (um 1915)  \nernst, harte Schale, weicher Kern, direkt',
+    },
+    {
+        number: 7,
+        role: 'Mutter',
+        desc: '(ca. 35. Jahre alt)',
+    },
+    {
+        number: 8,
+        role: 'Vater',
+        voiceover: ['audio/voiceover/kurt/Vater.WAV','audio/voiceover/kurt/Vater.WAV'],
+        desc: '(ca. 35. Jahre alt)',
+    },
+]
