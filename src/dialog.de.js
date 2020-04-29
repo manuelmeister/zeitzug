@@ -46,7 +46,7 @@ export default [
         audio: 'audio/E1.mp3',
         scenes:   [
             {
-                image:  "img/baden_bgnew.png",
+                image:  "img/2.2 2.png",
                 dialog: [
                     {char: 'Sara', text: "Huch, wo bin ich hier gelandet?"},
                     {char: 'Negrelli', text: "Im Jahr 1846 natürlich. Darf ich mich vorstellen. Alois Negrelli mein Name."},
