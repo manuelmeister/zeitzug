@@ -361,7 +361,7 @@ export default [
     {
         title:  "Taktfahrplan",
         number: "4",
-        desc:   "<b>Wird momentan nicht umgesetzt.</b><br>Sara trifft auf Samuel Stähli. Der 28-jährige ETH Ingenieur will in der Schweiz einen Taktfahrplan einführen. Das bedeutet, dass zwischen grossen Verkehrsknotenpunkten die Züge in einem geregelten Takt fahren. Die Wartezeit wird verkürzt und die Anschlussmöglichkeiten werden verbessert. Unter diesem Projekt wird auch die Bahn2000 gestartet. Er erzählt noch, wie er das Projekt der Fahrplankommision vorstellen wird.",
+        desc:   "**Wird momentan nicht umgesetzt.**\n\nSara trifft auf Samuel Stähli. Der 28-jährige ETH Ingenieur will in der Schweiz einen Taktfahrplan einführen. Das bedeutet, dass zwischen grossen Verkehrsknotenpunkten die Züge in einem geregelten Takt fahren. Die Wartezeit wird verkürzt und die Anschlussmöglichkeiten werden verbessert. Unter diesem Projekt wird auch die Bahn2000 gestartet. Samuel werden folgende prägnante Aussagen zugeordnet:\n\n So schnell wie nötig - nicht so schnell wie möglich.  \n Die Züge müssen dort halten, wo die Leute sind, nicht wo die Weichen stehen.  \n Der Bevölkerung muss man ein Angebot verkaufen, nicht eine Baustelle.",
         image:  "img/6.1.png",
         open:   false,
         scenes: []
