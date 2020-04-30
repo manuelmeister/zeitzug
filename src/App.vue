@@ -62,7 +62,6 @@
 </template>
 
 <script>
-    import {default as dialog} from "@/dialog";
     import Toc from "@/components/TOC";
 
 
@@ -72,7 +71,6 @@
         components: {Toc},
 
         data: () => ({
-            dialogs: dialog,
             activeIndex: location.hash.charAt(1),
             currentOffset: (
                 window.pageYOffset ||
@@ -84,6 +82,9 @@
             open: false
         }),
         computed: {
+            dialogs() {
+                return this.$store.getters.dialog
+            },
             toc: function () {
                 let result = []
                 for (const dialog of this.dialogs) {
@@ -92,14 +93,16 @@
                         text: dialog.title_short ? dialog.title_short : dialog.title,
                         parent: parseInt(dialog.number)
                     });
-                    result.push(...dialog.scenes.map(
-                        (scene, i) => {
-                            return {
-                                id: dialog.number + '.' + i,
-                                parent: parseInt(dialog.number)
+                    if (dialog.scenes) {
+                        result.push(...dialog.scenes.map(
+                            (scene, i) => {
+                                return {
+                                    id: dialog.number + '.' + i,
+                                    parent: parseInt(dialog.number)
+                                }
                             }
-                        }
-                    ))
+                        ))
+                    }
                 }
                 return result
             },
@@ -115,11 +118,18 @@
                 },
             },
         },
+        created() {
+            if (this.$route.name === 'Storyboard') {
+                this.$store.dispatch('loadDialog')
+            }
+        },
         mounted() {
             if (this.$route.name === 'Storyboard') {
-                let hash = location.hash;
-                this.$router.replace({hash: '#' + location.hash.charAt(1), params: {stay: true}});
-                this.$router.replace({hash: hash, params: {stay: true}});
+                if (location.hash.length > 2) {
+                    let hash = location.hash;
+                    this.$router.replace({hash: '#' + location.hash.charAt(1), params: {stay: true}});
+                    this.$router.replace({hash: hash, params: {stay: true}});
+                }
                 this.findActiveIndex();
             }
         },
@@ -150,17 +160,18 @@
 
                     const lastIndex = this.internalToc.length - 1
 
-                    let newHash = '#' + item.id;
-                    if (lastIndex > -1 && !(this.$route.hash.includes(newHash) || this.$route.hash === newHash)) {
-                        if (this.$route.hash.charAt(1) !== newHash.charAt(1)) {
-                            this.$router.replace({hash: '#' + item.parent, params: {stay: true}});
-                        } else {
-                            this.$router.replace({hash: newHash, params: {stay: true}});
+                    if (item) {
+                        let newHash = '#' + item.id;
+                        if (lastIndex > -1 && !(this.$route.hash.includes(newHash) || this.$route.hash === newHash)) {
+                            if (this.$route.hash.charAt(1) !== newHash.charAt(1)) {
+                                this.$router.replace({hash: '#' + item.parent, params: {stay: true}});
+                            } else {
+                                this.$router.replace({hash: newHash, params: {stay: true}});
+                            }
+
+                            this.activeIndex = item.parent > -1 ? lastIndex - item.parent : lastIndex
                         }
-
-                        this.activeIndex = item.parent > -1 ? lastIndex - item.parent : lastIndex
                     }
-
                 }
             },
             onScroll() {
