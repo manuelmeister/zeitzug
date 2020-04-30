@@ -53,7 +53,7 @@ export default [
         number: 8,
         name: 'Vater',
         role: 'Vater von Sara & Emma',
-        voiceover: ['audio/voiceover/kurt/Vater.WAV','audio/voiceover/kurt/Vater.WAV'],
+        voiceover: ['audio/voiceover/kurt/Vater.WAV','audio/voiceover/kurt/Vater.mp3'],
         desc: '(ca. 35. Jahre alt)',
     },
 ]

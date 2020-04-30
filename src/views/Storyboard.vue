@@ -20,7 +20,7 @@
                             </div>
                             <div class="textbox unprint" v-if="dialog.audio">
                                 <h3 class="caption">Dialog (Audio)</h3>
-                                <audio-player :src="dialog.audio"/>
+                                <audio-player :src="dialog.audio" color="primary lighten-5"/>
                             </div>
                             <div class="textbox" v-for="field in dialog.custom">
                                 <h3 class="caption">{{field.title}}</h3>
@@ -210,8 +210,7 @@
     }
 
     .textbox--text {
-        //border: 3px solid #eeeeee;
-        background: #eeeeee;
+        background: var(--v-primary-lighten5);
         border-radius: 2px;
         padding: 4px;
 

@@ -24,8 +24,8 @@
             </v-btn>
         </div>
         <audio id="player" ref="player" v-on:ended="ended" v-on:canplay="canPlay">
-            <source v-if="!Array.isArray(src)" :src="src">
-            <source v-else v-for="source in src" :src="source">
+            <source v-if="!Array.isArray(src)" :src="src" :type="getSourceType(src)">
+            <source v-else v-for="source in src" :src="source" :type="getSourceType(source)">
         </audio>
     </v-sheet>
 </template>
@@ -184,6 +184,14 @@
             },
             currentTime() {
                 return this.audio ? formatTime(this.percentage) : '0:00'
+            },
+            getSourceType(source){
+                if(source.substr(-3,3).match(/wav/i)){
+                    return 'audio/wave'
+                }
+                if(source.substr(-3,3).match(/mp3/i)){
+                    return 'audio/mpeg'
+                }
             },
             init: function () {
                 this.audio.addEventListener('timeupdate', this._handlePlayingUI);
