@@ -13,21 +13,29 @@
             </figure>
         </v-card>
         <v-sheet class="mx-auto" color="transparent" max-width="700">
-            <v-card v-for="character in characters" :data-char="character.name" :id="character.name" class="mt-2" :key="character.number">
-                <v-img v-if="character.voiceover">
-                </v-img>
-                <v-card-text>
-                    <h2 class="d-flex">{{name(character)}}
+            <v-card v-for="character in characters" :data-char="character.name" :id="character.name" class="mt-2"
+                    :key="character.number">
+                <v-row no-gutters>
+                    <v-col cols="8" class="d-flex flex-column">
+                        <v-card-text>
+                            <h2 class="d-flex">{{name(character)}}
 
-                        <router-link class="link" :to="'#' + character.name"
-                                     title="Figursprungmarke">
-                            <v-icon>mdi-link</v-icon>
-                        </router-link>
-                        <v-chip to="#chars" small class="ml-auto">{{character.number}}</v-chip>
-                    </h2>
-                    <div v-html="text(character)"/>
-                </v-card-text>
-                <vuetify-audio v-if="character.voiceover" color="grey" :src="character.voiceover" downloadable/>
+                                <router-link class="link" :to="{hash:'#' + character.name, params: {stay: false}}"
+                                             title="Figursprungmarke">
+                                    <v-icon>mdi-link</v-icon>
+                                </router-link>
+                                <v-chip to="#chars" small class="ml-auto">{{character.number}}</v-chip>
+                            </h2>
+                            <div v-html="text(character)"/>
+                        </v-card-text>
+                        <vuetify-audio v-if="character.voiceover" class="mt-auto" color="primary lighten-5" :src="character.voiceover" downloadable/>
+                    </v-col>
+                    <v-col>
+                        <v-img :src="'img/characters/'+id(character) + '.png'" height="220" contain
+                               :srcset="'img/characters/'+character.name + '.png 1x,img/characters/'+character.name+ '@2x.png 2x'"
+                               :alt="'Bild von ' + name(character)" class="character_image"/>
+                    </v-col>
+                </v-row>
             </v-card>
         </v-sheet>
     </v-sheet>
@@ -65,22 +73,35 @@
             },
             text(char) {
                 return marked("" + char.role + "  \n" + char.desc);
+            },
+            id(char) {
+                if (char.name) {
+                    return char.name;
+                } else {
+                    return char.role;
+                }
             }
         }
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
     .characters p {
-        margin-bottom: 0!important;
+        margin-bottom: 0 !important;
     }
+
     .characters p + p {
         margin-top: 8px;
     }
 
-    ::v-deep .vuetify-audio {
-        border-top-right-radius: 0 !important;
-        border-top-left-radius: 0 !important;
+    .character_image {
+        background-image: radial-gradient(var(--v-primary-lighten5), var(--v-primary-lighten4));
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+    .characters ::v-deep .vuetify-audio {
+        border-radius: 0 0 0 4px!important;
     }
 </style>

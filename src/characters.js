@@ -45,12 +45,14 @@ export default [
     },
     {
         number: 7,
-        role: 'Mutter',
+        name: 'Mutter',
+        role: 'Mutter von Sara & Emma',
         desc: '(ca. 35. Jahre alt)',
     },
     {
         number: 8,
-        role: 'Vater',
+        name: 'Vater',
+        role: 'Vater von Sara & Emma',
         voiceover: ['audio/voiceover/kurt/Vater.WAV','audio/voiceover/kurt/Vater.WAV'],
         desc: '(ca. 35. Jahre alt)',
     },

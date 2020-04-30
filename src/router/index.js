@@ -44,7 +44,7 @@ const router = new VueRouter({
         } else if (to.hash && !to.params.stay) {
             return {
                 selector: to.hash,
-                offset: to.params.mobile ? {x: 0, y: 0} : {x: 0, y: 140}
+                offset: to.params.mobile ? {x: 0, y: 0} : {x: 0, y: this.app.$vuetify.application.top}
             }
         }
     }

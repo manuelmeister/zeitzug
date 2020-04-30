@@ -1,5 +1,5 @@
 <template>
-    <v-card class="vuetify-audio" elevation="0" color="#eee" light>
+    <v-sheet class="vuetify-audio" light :color="color">
         <div class="d-flex align-center">
             <div class="controls">
                 <v-btn text icon class="ma-2" color="primary" @click.native="playing ? pause() : play()" :disabled="!loaded">
@@ -27,7 +27,7 @@
             <source v-if="!Array.isArray(src)" :src="src">
             <source v-else v-for="source in src" :src="source">
         </audio>
-    </v-card>
+    </v-sheet>
 </template>
 <script>
     const formatTime = second => {
@@ -59,7 +59,8 @@
             downloadable: {
                 type: Boolean,
                 default: false
-            }
+            },
+            color: String
         },
         data() {
             return {
@@ -90,7 +91,7 @@
                     }
                     this.percentageInternal = value
                 }
-            }
+            },
         },
         methods: {
             dragSlider() {
