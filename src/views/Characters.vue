@@ -13,7 +13,7 @@
             </figure>
         </v-card>
         <v-sheet class="mx-auto" color="transparent" max-width="700">
-            <v-card v-for="char in characters" :data-char="char.name" :id="char.name" class="mt-2"
+            <v-card v-for="char in characters" :data-char="id(char)" :id="id(char)" class="mt-2"
                     :key="char.number">
                 <v-row no-gutters>
                     <v-col cols="8" class="d-flex flex-column">
@@ -32,8 +32,8 @@
                                        :src="char.voiceover" downloadable/>
                     </v-col>
                     <v-col>
-                        <v-img :src="'img/characters/'+char.name + '.png'" height="220" contain
-                               :srcset="'img/characters/'+char.name + '.png 1x,img/characters/'+char.name+ '@2x.png 2x'"
+                        <v-img :src="'img/characters/'+id(char) + '.png'" height="220" contain
+                               :srcset="'img/characters/'+id(char) + '.png 1x,img/characters/'+id(char)+ '@2x.png 2x'"
                                :alt="'Bild von ' + name(char)" class="character_image"/>
                     </v-col>
                 </v-row>

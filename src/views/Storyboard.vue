@@ -61,10 +61,11 @@
                                         <div v-for="(paragraph,index) in scene.dialog" :key="index"
                                              :data-char="paragraph.char">
                                             <p>
-                                                <router-link class="char_link" title="Charakter anschauen"
-                                                             :to="{name: 'Characters', hash:'#'+paragraph.char,params:{stay:false} }">
+                                                <router-link v-if="exists(paragraph.char)" class="char_link" title="Charakter anschauen"
+                                                             :to="{name: 'Characters', hash:'#'+paragraph.char.toLowerCase(),params:{stay:false} }">
                                                     {{paragraph.char}}:
                                                 </router-link>
+                                                <strong v-else>{{paragraph.char}}:</strong>
                                                 <span v-html="paragraph2html(paragraph)"/>
                                             </p>
                                         </div>
@@ -81,10 +82,11 @@
                                         <div v-for="(paragraph,index) in field.content" :key="index"
                                              :data-char="paragraph.char">
                                             <p>
-                                                <router-link class="char_link" title="Charakter anschauen"
-                                                             :to="{name: 'Characters', hash:'#'+paragraph.char,params:{stay:false} }">
+                                                <router-link v-if="exists(paragraph.char)" class="char_link" title="Charakter anschauen"
+                                                             :to="{name: 'Characters', hash:'#'+paragraph.char.toLowerCase(),params:{stay:false} }">
                                                     {{paragraph.char}}:
                                                 </router-link>
+                                                <strong v-else>{{paragraph.char}}:</strong>
                                                 <span v-html="paragraph2html(paragraph)"/>
                                             </p>
                                         </div>
@@ -112,6 +114,7 @@
 
 <script>
     import {markdown2html, paragraph} from "@/util/dialog";
+    import {exists} from "@/util/char";
 
     const AudioPlayer = () => import(/* webpackChunkName: "player" */ "@/components/AudioPlayer");
 
@@ -131,7 +134,8 @@
         },
         methods: {
             markdown2html,
-            paragraph2html: paragraph
+            paragraph2html: paragraph,
+            exists
         }
     };
 </script>
