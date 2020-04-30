@@ -13,27 +13,28 @@
             </figure>
         </v-card>
         <v-sheet class="mx-auto" color="transparent" max-width="700">
-            <v-card v-for="character in characters" :data-char="character.name" :id="character.name" class="mt-2"
-                    :key="character.number">
+            <v-card v-for="char in characters" :data-char="char.name" :id="char.name" class="mt-2"
+                    :key="char.number">
                 <v-row no-gutters>
                     <v-col cols="8" class="d-flex flex-column">
                         <v-card-text>
-                            <h2 class="d-flex">{{name(character)}}
+                            <h2 class="d-flex">{{name(char)}}
 
-                                <router-link class="link" :to="{hash:'#' + character.name, params: {stay: false}}"
+                                <router-link class="link" :to="{hash:'#' + char.name, params: {stay: false}}"
                                              title="Figursprungmarke">
                                     <v-icon>mdi-link</v-icon>
                                 </router-link>
-                                <v-chip to="#chars" small class="ml-auto">{{character.number}}</v-chip>
+                                <v-chip to="#chars" small class="ml-auto">{{char.number}}</v-chip>
                             </h2>
-                            <div v-html="text(character)"/>
+                            <div v-html="desc(char)"/>
                         </v-card-text>
-                        <vuetify-audio v-if="character.voiceover" class="mt-auto" color="primary lighten-5" :src="character.voiceover" downloadable/>
+                        <vuetify-audio v-if="char.voiceover" class="mt-auto" color="primary lighten-5"
+                                       :src="char.voiceover" downloadable/>
                     </v-col>
                     <v-col>
-                        <v-img :src="'img/characters/'+id(character) + '.png'" height="220" contain
-                               :srcset="'img/characters/'+character.name + '.png 1x,img/characters/'+character.name+ '@2x.png 2x'"
-                               :alt="'Bild von ' + name(character)" class="character_image"/>
+                        <v-img :src="'img/characters/'+char.name + '.png'" height="220" contain
+                               :srcset="'img/characters/'+char.name + '.png 1x,img/characters/'+char.name+ '@2x.png 2x'"
+                               :alt="'Bild von ' + name(char)" class="character_image"/>
                     </v-col>
                 </v-row>
             </v-card>
@@ -43,7 +44,7 @@
 
 <script>
     import {default as characters} from "@/characters";
-    import {default as marked} from "marked";
+    import {name,desc,id} from "@/util/char";
 
     export default {
         name: "App",
@@ -56,31 +57,9 @@
             VuetifyAudio: () => import('@/components/AudioPlayer')
         },
         methods: {
-            name(char) {
-                let name = ""
-                if (char.firstname) {
-                    name += char.firstname + " ";
-                }
-                if (char.name) {
-                    name += char.name;
-                } else {
-                    name = char.role
-                }
-                if (char.lastname) {
-                    name += " " + char.lastname;
-                }
-                return name;
-            },
-            text(char) {
-                return marked("" + char.role + "  \n" + char.desc);
-            },
-            id(char) {
-                if (char.name) {
-                    return char.name;
-                } else {
-                    return char.role;
-                }
-            }
+            name,
+            desc,
+            id
         }
     }
 </script>
@@ -102,6 +81,6 @@
     }
 
     .characters ::v-deep .vuetify-audio {
-        border-radius: 0 0 0 4px!important;
+        border-radius: 0 0 0 4px !important;
     }
 </style>

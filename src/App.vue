@@ -62,7 +62,7 @@
 </template>
 
 <script>
-    import {default as dialog_de} from "@/dialog.de";
+    import {default as dialog} from "@/dialog";
     import Toc from "@/components/TOC";
 
 
@@ -72,7 +72,7 @@
         components: {Toc},
 
         data: () => ({
-            dialogs: dialog_de,
+            dialogs: dialog,
             activeIndex: location.hash.charAt(1),
             currentOffset: (
                 window.pageYOffset ||
@@ -83,7 +83,6 @@
             tocTimeout: 0,
             open: false
         }),
-
         computed: {
             toc: function () {
                 let result = []
@@ -180,7 +179,7 @@
 </script>
 <style lang="scss">
     @import "src/styles/overrides";
-    @import "src/styles/mdi";
+    @import "styles/mdi";
     //@import '../node_modules/@mdi/font/css/materialdesignicons.css';
 
     a {

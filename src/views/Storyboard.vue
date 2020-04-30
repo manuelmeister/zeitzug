@@ -16,7 +16,7 @@
                             <div class="textbox">
                                 <h3 class="caption">Beschreibung</h3>
                                 <div class="textbox--text"
-                                     v-html="html(dialog.desc)"/>
+                                     v-html="markdown2html(dialog.desc)"/>
                             </div>
                             <div class="textbox unprint" v-if="dialog.audio">
                                 <h3 class="caption">Dialog (Audio)</h3>
@@ -24,7 +24,7 @@
                             </div>
                             <div class="textbox" v-for="field in dialog.custom">
                                 <h3 class="caption">{{field.title}}</h3>
-                                <div class="textbox--text" v-html="html(field.content)"/>
+                                <div class="textbox--text" v-html="markdown2html(field.content)"/>
                             </div>
                         </v-col>
                         <v-col cols="12" sm="5">
@@ -61,24 +61,36 @@
                                         <div v-for="(paragraph,index) in scene.dialog" :key="index"
                                              :data-char="paragraph.char">
                                             <p>
-                                                <router-link class="char_link" title="Charakter anschauen" :to="{name: 'Characters', hash:'#'+paragraph.char,params:{stay:false} }">{{paragraph.char}}</router-link>:
-                                                <span v-html="dialog_paragraph(paragraph)"/>
+                                                <router-link class="char_link" title="Charakter anschauen"
+                                                             :to="{name: 'Characters', hash:'#'+paragraph.char,params:{stay:false} }">
+                                                    {{paragraph.char}}
+                                                </router-link>
+                                                :
+                                                <span v-html="paragraph2html(paragraph)"/>
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="textbox--text" v-else>{{html(scene.dialog)}}</div>
+                                    <div class="textbox--text" v-else>{{markdown2html(scene.dialog)}}</div>
                                 </div>
                                 <div class="textbox" v-if="scene.action">
                                     <h3 class="caption">Handlung</h3>
-                                    <div class="textbox--text" v-html="html(scene.action)"/>
+                                    <div class="textbox--text" v-html="markdown2html(scene.action)"/>
                                 </div>
                                 <div class="textbox" v-for="field in scene.custom">
                                     <h3 class="caption">{{field.title}}</h3>
                                     <div class="textbox--text" v-if="Array.isArray(field.content)">
                                         <div v-for="(paragraph,index) in field.content" :key="index"
-                                             :data-char="paragraph.char" v-html="dialog_paragraph(paragraph)"/>
+                                             :data-char="paragraph.char">
+                                            <p>
+                                                <router-link  class="char_link" title="Charakter anschauen"
+                                                             :to="{name: 'Characters', hash:'#'+paragraph.char,params:{stay:false} }">
+                                                    {{paragraph.char}}
+                                                </router-link>:
+                                                <span v-html="paragraph2html(paragraph)"/>
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="textbox--text" v-else v-html="html(field.content)"/>
+                                    <div class="textbox--text" v-else v-html="markdown2html(field.content)"/>
                                 </div>
                             </v-col>
                             <v-col cols="12" md="5" order="0" order-md="2">
@@ -100,58 +112,26 @@
 </template>
 
 <script>
-    import {default as dialog_de} from "@/dialog.de";
-    import {parseLink} from "@/plugins/helpers";
-    import marked from "marked";
-    import AudioPlayer from "@/components/AudioPlayer";
+    import {default as dialog} from "@/dialog";
+    import {markdown2html, paragraph} from "@/util/dialog";
+    const AudioPlayer = () => import(/* webpackChunkName: "player" */ "@/components/AudioPlayer");
 
     export default {
         name: "App",
         components: {AudioPlayer},
         data() {
             return {
-                dialog: dialog_de
+                dialog: dialog
             };
-        },
-        beforeCreate() {
-            if (location.hash) {
-                dialog_de[location.hash.charAt(1)].open = true;
-            }
         },
         computed: {
             navigation() {
                 return this.dialog.slice(1, -2);
             }
         },
-        mounted() {
-            if (location.hash) {
-                this.dialog[location.hash.charAt(1)].open = true;
-                this.$nextTick(function () {
-                    this.$router.replace({hash: location.hash}, () => {
-                    })
-                })
-            }
-        },
         methods: {
-            parseLink,
-            marked,
-            toggle(dialog) {
-                this.dialog[dialog].open = !this.dialog[dialog].open;
-            },
-            html(input) {
-                if (input) {
-                    input = input.replace(/\[([^\]]*)\]\(([^)]*)\)/g, parseLink)
-                    let markdown = this.marked(input);
-                    if (markdown.match(/^<p>(.*)<\/p>$/gm)) {
-                        return markdown.matchAll(/^<p>(.*)<\/p>$/gm).next().value[1]
-                    }
-                    return markdown
-                }
-                return ''
-            },
-            dialog_paragraph(paragraph) {
-                return this.html(paragraph.text)
-            }
+            markdown2html,
+            paragraph2html: paragraph
         }
     };
 </script>
@@ -190,7 +170,7 @@
     .char_link {
         text-decoration: underline;
         font-weight: 600;
-        color: inherit!important;
+        color: inherit !important;
     }
 
     .textbox {
