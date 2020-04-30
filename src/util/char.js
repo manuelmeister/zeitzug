@@ -1,5 +1,4 @@
 import {default as marked} from "marked";
-const characters = () => import(/* webpackChunkName: "characters" */ '@/characters')
 
 export function name(char) {
     let name = ""
@@ -22,5 +21,5 @@ export function id(char) {
 }
 
 export function exists(char) {
-    return characters.some(character => char.toLowerCase() === character.name.toLowerCase())
+    return this.$store.getters.characters.some(character => char.toLowerCase() === character.name.toLowerCase())
 }

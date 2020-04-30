@@ -5,7 +5,7 @@
                 Die Charaktere
             </h1>
             <figure>
-                <v-img src="img/chars.jpg" id="chars"/>
+                <v-img src="img/chars.jpg" id="chars" aspect-ratio="2.671755725"/>
                 <figcaption class="text-center pa-4">
                     <p class="body-2">Die Charaktere wurden von <a href="https://www.behance.net/irmirx">Irina Mir<i
                             class="v-icon mdi small mdi-open-in-new"/></a> erstellt.</p>
@@ -43,18 +43,22 @@
 </template>
 
 <script>
-    import {default as characters} from "@/characters";
     import {name,desc,id} from "@/util/char";
+
+    const AudioPlayer = () => import(/* webpackChunkName: "player" */ "@/components/AudioPlayer");
 
     export default {
         name: "App",
-        data() {
-            return {
-                characters: characters
-            };
-        },
         components: {
-            VuetifyAudio: () => import('@/components/AudioPlayer')
+            VuetifyAudio: AudioPlayer
+        },
+        computed: {
+            characters() {
+                return this.$store.getters.characters
+            }
+        },
+        created(){
+            this.$store.dispatch('loadCharacters')
         },
         methods: {
             name,

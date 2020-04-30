@@ -63,9 +63,8 @@
                                             <p>
                                                 <router-link class="char_link" title="Charakter anschauen"
                                                              :to="{name: 'Characters', hash:'#'+paragraph.char,params:{stay:false} }">
-                                                    {{paragraph.char}}
+                                                    {{paragraph.char}}:
                                                 </router-link>
-                                                :
                                                 <span v-html="paragraph2html(paragraph)"/>
                                             </p>
                                         </div>
@@ -82,10 +81,10 @@
                                         <div v-for="(paragraph,index) in field.content" :key="index"
                                              :data-char="paragraph.char">
                                             <p>
-                                                <router-link  class="char_link" title="Charakter anschauen"
+                                                <router-link class="char_link" title="Charakter anschauen"
                                                              :to="{name: 'Characters', hash:'#'+paragraph.char,params:{stay:false} }">
-                                                    {{paragraph.char}}
-                                                </router-link>:
+                                                    {{paragraph.char}}:
+                                                </router-link>
                                                 <span v-html="paragraph2html(paragraph)"/>
                                             </p>
                                         </div>
@@ -112,22 +111,23 @@
 </template>
 
 <script>
-    import {default as dialog} from "@/dialog";
     import {markdown2html, paragraph} from "@/util/dialog";
+
     const AudioPlayer = () => import(/* webpackChunkName: "player" */ "@/components/AudioPlayer");
 
     export default {
         name: "App",
         components: {AudioPlayer},
-        data() {
-            return {
-                dialog: dialog
-            };
-        },
         computed: {
             navigation() {
                 return this.dialog.slice(1, -2);
+            },
+            dialog() {
+                return this.$store.getters.dialog
             }
+        },
+        created() {
+            this.$store.dispatch('loadDialog')
         },
         methods: {
             markdown2html,
