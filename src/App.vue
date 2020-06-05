@@ -21,6 +21,7 @@
             </v-list-item>
             <v-spacer/>
             <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
+                <v-btn text :to="{name: 'AppChoose'}">App</v-btn>
                 <v-btn text :to="{name: 'Storyboard'}">Storyboard</v-btn>
                 <v-menu offset-y>
                     <template v-slot:activator="{on}">
@@ -49,6 +50,10 @@
             <v-btn text :to="{name: 'Characters'}">
                 Charaktere
                 <v-icon>mdi-account-multiple</v-icon>
+            </v-btn>
+            <v-btn text :to="{name: 'AppChoose'}">
+                App
+                <v-icon>mdi-play-box-multiple</v-icon>
             </v-btn>
             <v-btn text :to="{name: 'About'}">
                 Projekt

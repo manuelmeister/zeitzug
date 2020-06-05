@@ -47,6 +47,7 @@ export default [
         scenes:   [
             {
                 image:  "img/2.2 2.png",
+                video:  "video/1.0.mp4",
                 dialog: [
                     {char: 'Sara', text: "Huch, wo bin ich hier gelandet?"},
                     {char: 'Negrelli', text: "Im Jahr 1846 natürlich. Darf ich mich vorstellen. Alois Negrelli mein Name."},

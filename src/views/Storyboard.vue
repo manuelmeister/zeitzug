@@ -61,11 +61,10 @@
                                         <div v-for="(paragraph,index) in scene.dialog" :key="index"
                                              :data-char="paragraph.char">
                                             <p>
-                                                <router-link v-if="exists(paragraph.char)" class="char_link" title="Charakter anschauen"
+                                                <router-link class="char_link" title="Charakter anschauen"
                                                              :to="{name: 'Characters', hash:'#'+paragraph.char.toLowerCase(),params:{stay:false} }">
                                                     {{paragraph.char}}:
-                                                </router-link>
-                                                <strong v-else>{{paragraph.char}}:</strong>
+                                                </router-link>&nbsp;
                                                 <span v-html="paragraph2html(paragraph)"/>
                                             </p>
                                         </div>
@@ -82,11 +81,10 @@
                                         <div v-for="(paragraph,index) in field.content" :key="index"
                                              :data-char="paragraph.char">
                                             <p>
-                                                <router-link v-if="exists(paragraph.char)" class="char_link" title="Charakter anschauen"
+                                                <router-link class="char_link" title="Charakter anschauen"
                                                              :to="{name: 'Characters', hash:'#'+paragraph.char.toLowerCase(),params:{stay:false} }">
                                                     {{paragraph.char}}:
-                                                </router-link>
-                                                <strong v-else>{{paragraph.char}}:</strong>
+                                                </router-link>&nbsp;
                                                 <span v-html="paragraph2html(paragraph)"/>
                                             </p>
                                         </div>
@@ -95,7 +93,12 @@
                                 </div>
                             </v-col>
                             <v-col cols="12" md="5" order="0" order-md="2">
-                                <v-img v-if="scene.image" aspect-ratio="1.7778" :src="scene.image"/>
+                                <v-img v-if="scene.image && !scene.video" aspect-ratio="1.7778" :src="scene.image"/>
+                                <v-responsive aspect-ratio="1.7778" v-if="scene.video">
+                                    <video controls width="100%">
+                                        <source :src="scene.video" type='video/mp4'>
+                                    </video>
+                                </v-responsive>
                             </v-col>
                         </v-row>
                     </v-container>

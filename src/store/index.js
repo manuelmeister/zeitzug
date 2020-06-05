@@ -35,13 +35,13 @@ export default new Vuex.Store({
     actions: {
         loadDialog: async (context, payload) => {
             if(context.state.dialog.pristine){
-            let data = await import(/* webpackChunkName: "dialog" */ "@/dialog")
+            let data = await import(/* webpackChunkName: "storyboard-dialog" */ "@/dialog")
             context.commit('setDialog', data.default)
             }
         },
         loadCharacters: async (context, payload) => {
             if(context.state.characters.pristine) {
-                let data = await import(/* webpackChunkName: "characters" */ "@/characters")
+                let data = await import(/* webpackChunkName: "storyboard-characters" */ "@/characters")
                 context.commit('setCharacters', data.default)
             }
         },

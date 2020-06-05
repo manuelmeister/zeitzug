@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Storyboard from "@/views/Storyboard";
 
 Vue.use(VueRouter)
 
@@ -9,6 +8,53 @@ const routes = [
         path: '/characters',
         name: 'Characters',
         component: () => import(/* webpackChunkName: "characters" */ '@/views/Characters')
+    },
+    {
+        path: '/app',
+        component: () => import(/* webpackChunkName: "webapp" */ '@/views/Webapp'),
+        children: [
+            {
+                name: 'AppChoose',
+                path: '',
+                component: () => import(/* webpackChunkName: "choose" */ '@/views/webapp/Choose'),
+            },
+            {
+                path: 'qr',
+                component: () => import(/* webpackChunkName: "qr" */ '@/views/webapp/Qr'),
+                children: [
+                    {
+                        name: 'AppQr',
+                        path: '',
+                        component: () => import(/* webpackChunkName: "qr" */ '@/views/webapp/qr/QrInfo'),
+                    },
+                    {
+                        name: 'QrScan',
+                        path: 'scan',
+                        component: () => import(/* webpackChunkName: "qr" */ '@/views/webapp/qr/QrScan'),
+                    },
+                    {
+                        name: 'QrException',
+                        path: 'exception',
+                        component: () => import(/* webpackChunkName: "qr" */ '@/views/webapp/qr/QrException'),
+                    },
+                    {
+                        name: 'QrWatch',
+                        path: 'watch',
+                        component: () => import(/* webpackChunkName: "qr" */ '@/views/webapp/qr/QrWatch'),
+                    }
+                ]
+            },
+            {
+                name: 'AppList',
+                path: 'list',
+                component: () => import(/* webpackChunkName: "list" */ '@/views/webapp/List'),
+            },
+            {
+                name: 'AppWatch',
+                path: 'watch',
+                component: () => import(/* webpackChunkName: "list" */ '@/views/webapp/Watch'),
+            }
+        ]
     },
     {
         path: '/background',
@@ -26,11 +72,11 @@ const routes = [
     {
         path: '/storyboard',
         name: 'Storyboard',
-        component: Storyboard
+        component: () => import(/* webpackChunkName: "storyboard" */ '@/views/Storyboard')
     },
     {
         path: '/',
-        redirect: {name: 'Storyboard'}
+        redirect: {name: 'AppChoose'}
     }
 ]
 
