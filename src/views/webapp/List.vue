@@ -46,18 +46,49 @@
                 youtubes: [
                     {
                         name: "Einführung",
-                        id: "llqFIFg5tko",
+                        id: "e68pvcvO5kA",
+                        instructions: true,
                         tag: 'intro',
-                        who: 'Verkehrshaus, ' + (new Date()).getFullYear()
+                        next: 'episode1',
+                        who: 'Verkehrshaus, ' + (new Date()).getFullYear(),
+                        prev: null,
+                        nextScan: 'Gehe nun zur Lokomotive Genf.'
                     },
-                    {name: "Episode 1", id: "IkxtO9OdE-8", tag: 'episode1', who: 'Alois Negrelli, 1847'},
-                    {name: "Episode 2", id: "6LcNoRqFJZw", tag: 'episode2', who: 'Alfred Escher, 1852'},
-                    {name: "Episode 3", id: "EKjEnLSZGJc", tag: 'episode3', who: 'Josef Zemp, 1894'},
+                    {
+                        name: "Episode 1",
+                        id: "AgHF1Ee-fgQ",
+                        tag: 'episode1',
+                        next: 'episode2',
+                        prev: 'intro',
+                        who: 'Alois Negrelli, 1847',
+                        nextScan: 'Gehe nun zur Baulok 11 der Gotthardbahn.'
+                    },
+                    {
+                        name: "Episode 2",
+                        id: "vB0Njb45Hsk",
+                        tag: 'episode2',
+                        next: 'episode3',
+                        prev: 'episode1',
+                        who: 'Alfred Escher, 1852',
+                        nextScan: 'Gehe nun zur Lokomotive Elefant.'
+                    },
+                    {
+                        name: "Episode 3",
+                        id: "gc8Q9xWhtHE",
+                        tag: 'episode3',
+                        next: 'outro',
+                        prev: 'episode2',
+                        who: 'Josef Zemp, 1894',
+                        nextScan: 'Gehe nun zurück zum Start.'
+                    },
                     {
                         name: "Schluss",
-                        id: "eQbTBLu8J4o",
+                        id: "fneB2zcL2mo",
                         tag: 'outro',
-                        who: 'Verkehrshaus, ' + (new Date()).getFullYear()
+                        next: null,
+                        prev: 'episode3',
+                        who: 'Verkehrshaus, ' + (new Date()).getFullYear(),
+                        nextScan: 'Tschüss 😊'
                     },
                 ]
             }
