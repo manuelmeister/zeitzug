@@ -22,12 +22,12 @@
             <v-spacer/>
             <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
                 <v-btn text :to="{name: 'AppChoose'}">App</v-btn>
-                <v-btn text :to="{name: 'Storyboard'}">Storyboard</v-btn>
                 <v-menu offset-y>
                     <template v-slot:activator="{on}">
                         <v-btn text v-on="on">Ressourcen</v-btn>
                     </template>
                     <v-list>
+                        <v-list-item text :to="{name: 'Storyboard'}">Storyboard</v-list-item>
                         <v-list-item text :to="{name: 'Characters'}">Charaktere</v-list-item>
                         <v-list-item text :to="{name: 'Backgrounds'}">Hintergründe</v-list-item>
                     </v-list>
