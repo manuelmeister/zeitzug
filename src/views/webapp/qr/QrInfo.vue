@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="d-flex">
-            <v-btn text :to="{name: 'AppChoose'}" exact
+            <v-btn text :to="{name: 'AppChoose', params: {transition: 'slide-right'}}" exact
                    class="mb-2">
                 <v-icon left>
                     mdi-arrow-left
@@ -10,7 +10,7 @@
                 <span v-else>Zurück</span>
             </v-btn>
             <v-btn v-if="origin && !origin.isScanner" text
-                   :to="{name: 'QrWatch', query: {video: 'intro'}, params: {origin: origin.origin}}" exact
+                   :to="{name: 'QrWatch', query: {video: 'intro'}, params: {origin: origin.origin, transition: 'slide-left'}}" exact
                    class="mb-2 ml-auto">
                 <span v-if="$vuetify.breakpoint.mdAndUp">Nächste Episode</span>
                 <span v-else>Weiter</span>
@@ -19,7 +19,7 @@
                 </v-icon>
             </v-btn>
             <v-btn v-if="origin && origin.isScanner" text
-                   :to="{name: 'QrScan', query: {video: 'intro'}}" exact
+                   :to="{name: 'QrScan', query: {video: 'intro'}, params: {transition: 'slide-left'}}" exact
                    class="mb-2 ml-auto">
                 <span v-if="$vuetify.breakpoint.mdAndUp">Nächste Episode scannen</span>
                 <span v-else>Scannen</span>
@@ -35,7 +35,7 @@
                 <li>Halte deine Kamera über den QR Code, um das nächste Video freizuschalten.</li>
                 <li>
                     <v-btn color="green" dark
-                           :to="{name: 'QrScan', query: {video: 'intro'}, params: {origin: {thisScan: 'Scanne den QR Code auf dem Arbeitsblatt'}}}">
+                           :to="{name: 'QrScan', query: {video: 'intro'}, params: {origin: {thisScan: 'Scanne den QR Code auf dem Arbeitsblatt'}, transition: 'slide-left'}}">
                         <v-icon left>mdi-qrcode-scan</v-icon>
                         Jetzt Code scannen
                     </v-btn>
@@ -51,7 +51,7 @@
                 color="primary darken-1"
                 type="info"
                 style="color: #d7ccc8"
-                elevation="2"><p>Falls du die Kamera nicht aktivieren möchtest,<wbr> kannst du die <router-link :to="{name: 'AppList'}" style="color: #fff;">Episoden einzeln ansehen<i
+                elevation="2"><p>Falls du die Kamera nicht aktivieren möchtest,<wbr> kannst du die <router-link :to="{name: 'AppList'}" style="color: #fff;">Episoden&nbsp;einzeln&nbsp;ansehen<i
                     class="v-icon mdi small mdi-open-in-new"/></router-link>.</p>
             <p class="mb-0">Falls du nicht im Verkehrshaus bist, kannst du die <a href="/qrcodes.pdf" style="color:#fff;">QR Codes</a> herunterladen.</p>
         </v-alert>

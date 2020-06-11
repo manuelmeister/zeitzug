@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import Home from '@/views/Home'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -75,8 +77,13 @@ const routes = [
         component: () => import(/* webpackChunkName: "storyboard" */ '@/views/Storyboard')
     },
     {
+        path: '/home',
+        name: 'Home',
+        component: Home
+    },
+    {
         path: '/',
-        redirect: {name: 'AppChoose'}
+        redirect: {name: 'Home'}
     }
 ]
 

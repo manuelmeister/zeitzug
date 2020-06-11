@@ -9,14 +9,14 @@
                         mdi-play-box-multiple-outline
                     </v-icon>
                     <br>
-                    <v-btn color="blue-grey darken-2" outlined light :to="{name: 'AppWatch', query: {video: 'intro'}}">Einzelne Episode</v-btn>
+                    <v-btn color="blue-grey darken-2" outlined light :to="{name: 'AppWatch', query: {video: 'intro'}, params: {transition: 'slide-left'}}">Einzelne Episode</v-btn>
                 </v-col>
                 <v-col cols="6" style="border-left: 1px solid #eee">
                     <v-icon size="50px" class="ma-4">
                         mdi-qrcode-scan
                     </v-icon>
                     <br>
-                    <v-btn color="green" dark :to="{name: 'AppQr'}">
+                    <v-btn color="green" dark :to="{name: 'AppQr', params: {transition: 'slide-left'}}">
                         <span>QR Scanner</span>
                     </v-btn></v-col>
             </v-row>

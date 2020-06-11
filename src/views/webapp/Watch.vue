@@ -2,7 +2,8 @@
     <div>
         <div class="d-flex" style="position:relative;">
             <v-btn v-if="currentVideo.prev" text
-                   :to="{name: 'AppWatch', query: {video: currentVideo.prev}, params: {origin: state()}}" exact
+                   :to="{name: 'AppWatch', query: {video: currentVideo.prev}, params: {origin: state()}}"
+                   exact
                    class="mb-2">
                 <v-icon left>
                     mdi-arrow-left
@@ -11,7 +12,7 @@
                 <span v-else>Zurück</span>
             </v-btn>
             <v-btn v-if="currentVideo.instructions" text
-                   :to="{name: 'AppChoose', params: {origin: state()}}" exact
+                   :to="{name: 'AppChoose', params: {origin: state(), transition: 'slide-right'}}" exact
                    class="mb-2">
                 <v-icon left>
                     mdi-arrow-left
@@ -20,7 +21,8 @@
             </v-btn>
             <div class="v-btn v-size--default episode">{{currentVideo.name}}</div>
             <v-btn v-if="origin" text
-                   :to="{name: 'AppWatch', query: {video: currentVideo.next}, params: {origin: origin.origin}}" exact
+                   :to="{name: 'AppWatch', query: {video: currentVideo.next}, params: {origin: origin.origin}}"
+                   exact
                    class="mb-2 ml-auto">
                 <span v-if="$vuetify.breakpoint.mdAndUp">Nächste Episode</span>
                 <span v-else>Weiter</span>
@@ -29,7 +31,8 @@
                 </v-icon>
             </v-btn>
             <v-btn v-if="!origin && videoEnded && currentVideo.next" text
-                   :to="{name: 'AppWatch', query: {video: currentVideo.next}}" exact
+                   :to="{name: 'AppWatch', query: {video: currentVideo.next}}"
+                   exact
                    class="mb-2 ml-auto">
                 <span v-if="$vuetify.breakpoint.mdAndUp">Nächste Episode</span>
                 <span v-else>Weiter</span>
@@ -41,34 +44,43 @@
         <v-sheet color="primary lighten-4" light class="pt-2 pl-2 pr-2" elevation="10">
             <v-sheet color="black" dark>
                 <v-responsive :aspect-ratio="16/9" max-width="1000px" width="90vw">
-                    <div v-show="videoEnded">
-                        <video class="bgvideo" ref="bgvideo" loop muted autoplay src="/img/zeitstrudel_web.mp4"/>
-                        <v-btn absolute :bottom="$vuetify.breakpoint.mdAndUp" :top="$vuetify.breakpoint.smAndDown"
-                               @click="replay" class="ml-4">
-                            <v-icon left>
-                                mdi-replay
-                            </v-icon>
-                            Erneut ansehen
-                        </v-btn>
-                        <v-btn text absolute right top @click="toggleBackgroundMusic" class="ml-4"
-                               aria-label="Stummschalten">
-                            <v-icon v-if="bgMuted">
-                                mdi-music-note-off
-                            </v-icon>
-                            <v-icon v-else>
-                                mdi-music-note
-                            </v-icon>
-                        </v-btn>
-                        <v-btn absolute bottom right class="ml-4" v-if="hasEnded && currentVideo.next"
-                               color="white" light
-                               :to="{name: 'AppWatch', query: {video: currentVideo.next}}">
-                            Nächste Episode anschauen
-                            <v-icon right>mdi-arrow-right</v-icon>
-                        </v-btn>
+                    <div v-show="!thumbnail">
+                        <div v-show="videoEnded">
+                            <video class="bgvideo" ref="bgvideo" loop muted autoplay src="/img/zeitstrudel_web.mp4"/>
+                            <v-btn absolute :bottom="$vuetify.breakpoint.mdAndUp" :top="$vuetify.breakpoint.smAndDown"
+                                   @click="replay" class="ml-4">
+                                <v-icon left>
+                                    mdi-replay
+                                </v-icon>
+                                Erneut ansehen
+                            </v-btn>
+                            <v-btn text absolute right top @click="toggleBackgroundMusic" class="ml-4"
+                                   aria-label="Stummschalten">
+                                <v-icon v-if="bgMuted">
+                                    mdi-music-note-off
+                                </v-icon>
+                                <v-icon v-else>
+                                    mdi-music-note
+                                </v-icon>
+                            </v-btn>
+                            <v-btn absolute bottom right class="ml-4" v-if="hasEnded && currentVideo.next"
+                                   color="white" light
+                                   :to="{name: 'AppWatch', query: {video: currentVideo.next}}">
+                                Nächste Episode anschauen
+                                <v-icon right>mdi-arrow-right</v-icon>
+                            </v-btn>
+                        </div>
+                        <div v-show="!videoEnded" class="bgvideo">
+                            <youtube class="avideo" :video-id="getYoutubeId" fit-parent :player-vars="playerVars"
+                                     @ended="ended" ref="youtube"/>
+                        </div>
                     </div>
-                    <div v-show="!videoEnded" class="bgvideo">
-                        <youtube class="avideo" :video-id="getYoutubeId" fit-parent :player-vars="playerVars"
-                                 @ended="ended" ref="youtube"/>
+                    <v-img v-show="thumbnail" :src="'/img/stills/' + currentVideo.tag + '.jpg'" @click="play">
+                    </v-img>
+                    <div v-show="thumbnail" class="align-center justify-center fill-height playbtn" @click="play">
+                        <v-btn color="primary darken-3" elevation="12" fab x-large dark class="align-center">
+                            <v-icon size="42px">mdi-play</v-icon>
+                        </v-btn>
                     </div>
                 </v-responsive>
             </v-sheet>
@@ -85,6 +97,7 @@
         data: function () {
             return {
                 videoEnded: false,
+                thumbnail: true,
                 hasEnded: false,
                 videoTimer: null,
                 bgMuted: false,
@@ -151,6 +164,7 @@
         },
         beforeRouteUpdate(to, from, next) {
             this.videoEnded = false
+            this.thumbnail = true
             this.endLoop.fade(this.endLoop.volume(), 0, 750);
             next()
         },
@@ -205,6 +219,11 @@
                 setTimeout(function () {
                     instance.endLoop.fade(instance.endLoop.volume(), 0, 5000)
                 }, 20000)
+            },
+            play() {
+                this.thumbnail = false;
+                this.$refs.youtube.player.playVideo()
+                this.$refs.youtube.resizeProportionally()
             },
             replay() {
                 this.endLoop.fade(this.endLoop.volume(), 0, 750);
@@ -265,5 +284,13 @@
 
     .v-btn__content {
         width: 100%;
+    }
+
+    .playbtn {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
     }
 </style>

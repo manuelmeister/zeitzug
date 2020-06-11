@@ -7,9 +7,8 @@
                     In meiner praktische Bachelorarbeit geht es um die Geschichte der Eisenbahn in der Schweiz. <br>
                     Dazu erstelle ich 5 animierte Erklärvideos für 11 - 14-jährige Kinder & Jugendliche à ca. 3 Minuten.
                     Diese Videos stelle ich in Form eines Webapps zusammen, das als Angebot für
-                    Schulklassen im Verkehrshaus in der Ausstellung "Schienenverkehr" eingesetzt wird.
+                    Schulklassen im Verkehrshaus in der Ausstellung «Schienenverkehr» eingesetzt wird.
                 </p>
-                <v-img src="img/profil.jpg" v-if="$vuetify.breakpoint.xsOnly"/>
                 <h2 class="title mt-4 mb-1">Credits</h2>
                 <p>
                     Sprecher: <strong><a href="http://www.kurtgruenenfelder.ch/">Kurt Grünenfelder&nbsp;<i
@@ -31,22 +30,28 @@
             </v-card-text>
             <v-divider/>
             <v-sheet color="blue-grey lighten-5">
-                <v-card-text>
-                    <h2 class="title mt-4 mb-1">Über den Autor</h2>
-                    <v-avatar width="100" height="100" v-if="$vuetify.breakpoint.smAndUp" style="float: right">
-                        <v-img src="img/profil.jpg"/>
-                    </v-avatar>
-                    <p>
-                        Manuel Meister studiert <a target="_blank" href="https://cast.zhdk.ch/">Cast / Audiovisual Media&nbsp;<i class="v-icon mdi small mdi-open-in-new"/></a> an der <a
-                            target="_blank" href="https://zhdk.ch/">Zürcher Hochschule der Künste&nbsp;<i
-                            class="v-icon mdi small mdi-open-in-new"/></a>. Vor seinem Studium hat er das
-                        Gymnasium mit Schwerpunktfach Bildnerisches Gestalten
-                        und eine Way-Up Lehre als Informatiker bei der Schweizerischen Post absolviert.
-                    </p>
-                    <p>In seiner Freizeit fährt er viel Zug, wandert gerne und singt im
-                        Popchor VidaVocal mit. Daneben ist er in der Kantonsleitung der Pfadi Kanton
-                        Bern und im Kernteam vom Lagerradio des Bundeslagers 2021. </p>
-                </v-card-text>
+                <v-container>
+                    <v-row no-gutters>
+                        <v-col>
+                            <v-card-text class="mr-4">
+                                <h2 class="title mt-0 mb-1">Über den Autor</h2>
+                                <p>
+                                    Manuel Meister studiert <a target="_blank" href="https://cast.zhdk.ch/">Cast&nbsp;/&nbsp;Audiovisual&nbsp;Media<i class="v-icon mdi small mdi-open-in-new"/></a> an der <a
+                                        target="_blank" href="https://zhdk.ch/">Zürcher&nbsp;Hochschule&nbsp;der&nbsp;Künste&nbsp;<i
+                                        class="v-icon mdi small mdi-open-in-new"/></a>. Vor seinem Studium hat er das
+                                    Gymnasium mit Schwerpunktfach Bildnerisches Gestalten
+                                    und eine Way-Up Lehre als Informatiker bei der Schweizerischen Post absolviert.
+                                </p>
+                                <p>In seiner Freizeit fährt er viel Zug, wandert gerne und singt im
+                                    Popchor VidaVocal mit. Daneben ist er in der Kantonsleitung der Pfadi Kanton
+                                    Bern und im Kernteam vom Lagerradio des Bundeslagers 2021. </p>
+                            </v-card-text>
+                        </v-col>
+                        <v-col cols="auto">
+                            <v-img src="/img/manuel-ernst.jpg" :width="$vuetify.breakpoint.xsOnly ? '100%':'200' "/>
+                        </v-col>
+                    </v-row>
+                </v-container>
             </v-sheet>
         </v-card>
     </v-sheet>
@@ -54,6 +59,6 @@
 
 <style>
     .inherit-color {
-        color: inherit!important;
+        color: inherit !important;
     }
 </style>

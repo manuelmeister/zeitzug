@@ -16,7 +16,7 @@
             <v-card v-for="char in characters" :data-char="id(char)" :id="id(char)" class="mt-2"
                     :key="char.number">
                 <v-row no-gutters>
-                    <v-col cols="8" class="d-flex flex-column">
+                    <v-col cols="12" sm="8" class="d-flex flex-column" order="1">
                         <v-card-text>
                             <h2 class="d-flex">{{name(char)}}
 
@@ -31,7 +31,7 @@
                         <vuetify-audio v-if="char.voiceover" class="mt-auto" color="primary lighten-5"
                                        :src="char.voiceover" downloadable/>
                     </v-col>
-                    <v-col>
+                    <v-col order="0" order-sm="2">
                         <v-img :src="'img/characters/'+id(char) + '.png'" height="220" contain
                                :srcset="'img/characters/'+id(char) + '.png 1x,img/characters/'+id(char)+ '@2x.png 2x'"
                                :alt="'Bild von ' + name(char)" class="character_image"/>
@@ -70,11 +70,11 @@
 
 <style lang="scss" scoped>
 
-    .characters p {
+    .characters ::v-deep  p {
         margin-bottom: 0 !important;
     }
 
-    .characters p + p {
+     .characters ::v-deep p + p {
         margin-top: 8px;
     }
 

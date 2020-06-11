@@ -39,6 +39,7 @@ export default [
     },
     {
         title:    "Pionierzeit",
+        title_short:    "Pioniere",
         number:   "1",
         desc:     '<p>Dort trifft Sara auf [Alois Negrelli](https://de.wikipedia.org/wiki/Alois_Negrelli_von_Moldelbe). Der hat gerade den Auftrag erhalten, eine Eisenbahnstrecke zwischen [Zürich und Baden](https://en.wikipedia.org/wiki/Z%C3%BCrich%E2%80%93Baden_railway) zu bauen. Es sei die erste ganze Strecke in der Schweiz, erklärt er. Für diese Strecke hatte man mit der Kutsche etwa dreimal so lange wie man mit dem Zug haben wird. Zuerst wollte die Regierung der Stadt Baden, dass der Bahnhof im Süden gebaut wird. Doch Negrelli war es wichtig, dass der Bahnhof auf der Nordseite gebaut wird, da dort das Gebiet flacher ist und der Bahnhof einfacher vergrössert werden kann.</p><p>Sie schaffen es und Negrelli gibt Sara [spanische Brötli](https://de.wikipedia.org/wiki/Spanisch_Br%C3%B6tli) mit auf die erste Fahrt nach Zürich.</p>',
         open:     false,
@@ -137,11 +138,11 @@ export default [
         ]
     },
     {
-        title:    "Private Bahnen vs. Staatsbahn",
-        title_short:    "Privat vs. Staat",
+        title:    "Private Bahnen",
+        title_short:    "Private",
         number:   "2",
         desc:     "Sara kommt mit der Schweizerischen Nordbahn in Zürich an. Sie verteilt spanische Brötli. Sie trifft auf [Alfred Escher](https://de.wikipedia.org/wiki/Alfred_Escher). Escher hat im Nationalrat den Schweizer Eisenbahnbau vorangetrieben. Die Schweizer Bevölkerung hat Angst, dass die Schweiz umfahren wird und somit den wirtschaftlichen Anschluss verliert. Es wird diskutiert, ob die Eisenbahnen vom Staat oder von Privaten geführt werden sollen. Man entscheidet sich dafür, dass jeder selber eine Eisenbahn bauen kann, damit Randregionen nicht lange warten müssen und die Macht der Kantone nicht eingeschränkt wird.\n\nEscher hat die Vision, dass man die Alpen mit der Eisenbahn überqueren kann. Der [Gotthardtunnel](https://de.wikipedia.org/wiki/Gotthardtunnel) wird gebaut. Vor der Eröffnung wird Alfred leider schwer krank und kann nicht an der Eröffnungsfeier teilnehmen. Sara trifft auf der Rückfahrt auf [Josef Zemp](https://de.wikipedia.org/wiki/Josef_Zemp), der die Verstaatlichung der Eisenbahnen durchgeführt hat.",
-        custom: [{title: "Athmosphäre", content:"Es kommt alles in Fahrt. Im Büro von Escher, eher drückend. Im Zug mit Zemp eher windig"}],
+        custom: [{title: "Athmosphäre", content:"Es kommt alles in Fahrt. Im Büro von Escher, eher drückend."}],
         audio: "audio/E2.mp3",
         open:     false,
         scenes:   [
@@ -272,8 +273,69 @@ export default [
         ]
     },
     {
-        title:    "Elektrifizierung",
+        title:    "Verstaatlichung zur SBB",
+        title_short:    "SBB",
         number:   "3",
+        desc:     "Sara trifft auf der Rückfahrt der Gotthardeinweihung auf [Josef Zemp](https://de.wikipedia.org/wiki/Josef_Zemp). Er will die Eisenbahnen der Schweiz verstaatlichen.",
+        custom: [{title: "Athmosphäre", content:"Im Zug mit Zemp etwas windig"}],
+        audio: "audio/E2.mp3",
+        open:     false,
+        scenes:   [
+            {
+                image:  "img/4.2 2.png",
+                dialog: [
+                    {char: 'Zemp', text: "Und? Wie fandest du die Gotthard-Einweihung?"},
+                    {char: 'Sara', text: "Sehr toll, sie haben sogar leckere Glacés aus dem Tessin verteilt. Schon beeindruckend, dass man jetzt einfach durch den Berg vom Norden in den Süden fahren kann.\n(gähnt) Nur schade, dass ich dreimal umsteigen muss bis ich zuhause bin."},
+                    {char: 'Zemp', text: "Das verstehe ich. Aber das könnte sich bald ändern. Ich setze mich nämlich dafür ein, alle Eisenbahngesellschaften zu einer grossen schweizerischen Bundesbahn zusammen zu schliessen."},
+                    {char: 'Sara', text: "Das ist bestimmt eine schwierige Aufgabe. Meinst du, du schaffst das?"},
+                    {char: 'Zemp', text: "In der Tat! Die Zeit ist reif für eine Veränderung."},
+                ],
+                action: "Sara sitzt im Abteil mit Josef Zemp."
+            }, {
+                image:  "img/4.4.png",
+                dialog: [
+                    {char: "Zemp", text: "Viele Bahngesellschaften haben Geldprobleme durch den Konkurrenzkampf. Zum Beispiel verhinderten die Centralbahn und die Nordostbahn, dass die Schweizerische Nationalbahn gute Strecken bauen konnte. Jetzt ist die Nationalbahn bankrott und die Städte und Kantone müssen für sie zahlen."},
+                ],
+                action: "Man sieht in der Gedankenbubble von Zemp, was er erklärt."
+            }, {
+                image:  "img/4.3 2.png",
+                dialog: [
+                    {char: "Zemp", text: "Auch die Arbeiter der Bahnen sind nicht zufrieden und streiken, damit sie einen fairen Lohn bekommen."},
+                ],
+                action: "Man sieht in der Gedankenbubble von Zemp, was er erklärt."
+            }, {
+                image:  "img/4.2 2.png",
+                dialog: [
+                    {char: "Sara", text: "Ui, das klingt verzwickt."},
+                    {char: "Kondukteur (offvoice)", text: "Wir treffen in Luzern ein. Bitte alle aussteigen."},
+                    {char: "Zemp", text: "Ich muss nach Hause. Auf Wiedersehen."},
+                    {char: "Sara", text: "Tschüss, viel Erfolg."}
+                ]
+            }, {
+                image:  "img/4.6 2.png",
+                dialog: [
+                    {char: 'Sara', text: "Mal schauen, wie es weiter geht."}
+                ],
+                action: "Sara sitzt im Bahnhof Luzern mit dem Buch im Schoss."
+            }, {
+                image:  "img/4.6.png",
+                dialog: [
+                    {char: "Sara", text: "Ah, hier ist das erste Logo der SBB. In dem Fall hat der Zusammenschluss all dieser Bahnen zu einer grossen Bundesbahn geklappt."}
+                ],
+                action: "Sie blättert von der Seite mit Josef Zemp weiter zum ersten Logo der SBB."
+            }, {
+                image:  "img/3.15.png",
+                action: "Sie blättert erneut und wird in der Zeit vorwärts geschleudert."
+            }, {
+                image:  "img/4.12.png",
+                custom: [{ title:"Benutzeraktion", content: "Benutzer*in muss Lokomotive «Krokodil» einscannen."}]
+            }
+        ]
+    },
+    {
+        title:    "Elektrifizierung",
+        title_short:    "Strom",
+        number:   "4",
         desc:     "<p>Sara trifft auf [Robert Haab](https://de.wikipedia.org/wiki/Robert_Haab), den Generaldirektor der [SBB](https://de.wikipedia.org/wiki/Schweizerische_Bundesbahnen). Der 1. Weltkrieg beginnt. Die Kohle wird langsam knapp. Die SBB steckt in grossen finanziellen Schwierigkeiten. Die Elektrifizierung ist die Lösung für beide Probleme. Haab will alles elektrifizieren. Sara möchte bei der ersten Fahrt der elekrifizierten [Krokodil-Lokomotive](https://de.wikipedia.org/wiki/Krokodil_(Lokomotive)) von Thun nach Bern dabei sein.",
         custom: [{title: "Athmosphäre", content: "Krise, Krieg, Ungewissheit, dann erleichtert und motiviert"}],
         audio: "audio/E3.mp3",
@@ -361,7 +423,8 @@ export default [
     },
     {
         title:  "Taktfahrplan",
-        number: "4",
+        title_short:  "Fahrplan",
+        number: "5",
         desc:   "**Wird momentan nicht umgesetzt.**\n\nSara trifft auf Samuel Stähli. Der 28-jährige ETH Ingenieur will in der Schweiz einen Taktfahrplan einführen. Das bedeutet, dass zwischen grossen Verkehrsknotenpunkten die Züge in einem geregelten Takt fahren. Die Wartezeit wird verkürzt und die Anschlussmöglichkeiten werden verbessert. Unter diesem Projekt wird auch die Bahn2000 gestartet. Samuel werden folgende prägnante Aussagen zugeordnet:\n\n So schnell wie nötig - nicht so schnell wie möglich.  \n Die Züge müssen dort halten, wo die Leute sind, nicht wo die Weichen stehen.  \n Der Bevölkerung muss man ein Angebot verkaufen, nicht eine Baustelle.",
         image:  "img/6.1.png",
         open:   false,
@@ -369,7 +432,7 @@ export default [
     },
     {
         title:    "Ende",
-        number:   "5",
+        number:   "6",
         desc:     "Sara wird in die Gegenwart zurückgeholt. Sie fasst kurz zusammen, was sie alles erlebt hat. Sie fragt ihre Eltern, warum in der Eisenbahngeschichte nur Männer vorkamen. Emma findet, dass sie gerne Lokführerin werden möchte.",
         custom: [{title: "Athmosphäre", content: "Etwas benommen von der Reise, aber begeistert"}],
         audio: "audio/Ende.mp3",
@@ -413,7 +476,7 @@ export default [
     },
     {
         title:    "Zusatz",
-        number:   "6",
+        number:   "7",
         desc:     "Unabhängig von der Geschichte kommt Sara in zwei kurzen Filmen für die Arbeit vor. Im Werbefilm für Schulklassen macht sie Kindern das Webapp schmackhaft. Im Kurzfilm für die Diplompräsentation stellt sie die praktische Bachelorarbeit von Manuel Meister vor. ",
         open: false,
         scenes: [

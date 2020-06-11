@@ -13,14 +13,14 @@
         <v-app-bar app color="primary" dark hide-on-scroll
                    :extended="$route.name === 'Storyboard' && $vuetify.breakpoint.mdAndUp"
                    clipped-left>
-            <v-list-item two-line>
+            <v-list-item two-line to="/">
                 <v-list-item-content>
                     <v-list-item-title class="font-weight-bold">ZeitZug</v-list-item-title>
                     <v-list-item-subtitle>Schweizer Eisenbahngeschichte</v-list-item-subtitle>
                 </v-list-item-content>
             </v-list-item>
             <v-spacer/>
-            <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
+            <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp && !$route.path.includes('app')">
                 <v-btn text :to="{name: 'AppChoose'}">App</v-btn>
                 <v-menu offset-y>
                     <template v-slot:activator="{on}">
@@ -34,7 +34,6 @@
                 </v-menu>
                 <v-btn text :to="{name: 'About'}">Über das Projekt</v-btn>
             </v-toolbar-items>
-
             <template v-if="$route.name === 'Storyboard' && $vuetify.breakpoint.mdAndUp" v-slot:extension>
                 <toc :toc="internalToc" :activeIndex="activeIndex"/>
             </template>

@@ -5,7 +5,7 @@
                 Hintergründe
             </h1>
             <v-card-text>
-                <p>Für die Animationen erstelle ich die Hintergründe selber mit Hilfe eines iPads (Danke @Jasmine 🙇‍♂️)</p>
+                <p>Für die Animationen erstelle ich die Hintergründe selber mit Hilfe eines iPads. Diese Bilder sind z.T. nur Entwürfe und wurden noch überarbeitet.</p>
             </v-card-text>
             <v-sheet color="black" class="pa-4" tile>
                 <figure v-for="(n,i) in 10">

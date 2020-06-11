@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-btn text :to="{name: 'AppChoose'}" exact
+        <v-btn text :to="{name: 'AppChoose', params: {transition: 'slide-right'}}" exact
                class="mb-2">
             <v-icon left>
                 mdi-arrow-left

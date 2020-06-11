@@ -2,7 +2,8 @@
     <div>
         <div class="d-flex" style="position:relative;">
             <v-btn v-if="currentVideo.prev" text
-                   :to="{name: 'QrWatch', query: {video: currentVideo.prev}, params: {origin: state()}}" exact
+                   :to="{name: 'QrWatch', query: {video: currentVideo.prev}, params: {origin: state(), transition: 'slide-right'}}"
+                   exact
                    class="mb-2">
                 <v-icon left>
                     mdi-arrow-left
@@ -11,7 +12,7 @@
                 <span v-else>Zurück</span>
             </v-btn>
             <v-btn v-if="currentVideo.instructions" text
-                   :to="{name: 'AppQr', params: {origin: state()}}" exact
+                   :to="{name: 'AppQr', params: {origin: state(), transition: 'slide-right'}}" exact
                    class="mb-2">
                 <v-icon left>
                     mdi-arrow-left
@@ -20,7 +21,8 @@
             </v-btn>
             <div class="v-btn v-size--default episode">{{currentVideo.name}}</div>
             <v-btn v-if="origin && !origin.isScanner" text
-                   :to="{name: 'QrWatch', query: {video: currentVideo.next}, params: {origin: origin.origin}}" exact
+                   :to="{name: 'QrWatch', query: {video: currentVideo.next}, params: {origin: origin.origin}}"
+                   exact
                    class="mb-2 ml-auto">
                 <span v-if="$vuetify.breakpoint.mdAndUp">Nächste Episode</span>
                 <span v-else>Weiter</span>
@@ -87,7 +89,7 @@
                         </template>
                     </div>
                     <div v-show="!videoEnded" class="bgvideo">
-                        <youtube class="avideo" :video-id="getYoutubeId" fit-parent :player-vars="playerVars"
+                        <youtube :key="getYoutubeId" class="avideo" :video-id="getYoutubeId" fit-parent :player-vars="playerVars"
                                  @ended="ended" ref="youtube"/>
                     </div>
                 </v-responsive>

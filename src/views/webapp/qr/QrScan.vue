@@ -2,7 +2,7 @@
     <div>
         <div class="d-flex">
             <v-btn v-if="currentVideo.prev" text
-                   :to="{name: 'QrWatch', query: {video: currentVideo.prev}, params: {origin: state()}}" exact
+                   :to="{name: 'QrWatch', query: {video: currentVideo.prev}, params: {origin: state()}, transition: 'slide-right'}" exact
                    class="mb-2">
                 <v-icon left>
                     mdi-arrow-left
@@ -11,7 +11,7 @@
                 <span v-else>Zurück</span>
             </v-btn>
             <v-btn v-else text
-                   :to="{name: 'AppQr', params: {origin: state()}}" exact
+                   :to="{name: 'AppQr', params: {origin: state(), transition: 'slide-right'}}" exact
                    class="mb-2">
                 <v-icon left>
                     mdi-arrow-left
@@ -132,7 +132,7 @@
                             if (video !== this.currentVideo.tag) {
                                 this.snackbarWrongQr = true;
                             } else {
-                                this.$router.push({name: 'QrWatch', query: {video: video}})
+                                this.$router.push({name: 'QrWatch', query: {video: video}, params: {transition: 'slide-right'}})
                             }
                         } else {
                             console.log(string)
